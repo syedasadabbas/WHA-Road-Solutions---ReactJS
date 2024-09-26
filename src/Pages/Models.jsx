@@ -26,7 +26,7 @@ function Models() {
   // Fetch all cars without filters
   const fetchAllCars = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/cars/");
+      const response = await axios.get("https://syedasadabbas.pythonanywhere.com/api/cars/");
       const carsData = response.data;
       setOriginalCars(response.data); // Store the original cars data
       setCars(response.data.sort((a, b) => b.id - a.id)); // Sort cars by id in descending order
@@ -50,7 +50,7 @@ function Models() {
         query += `&price_min=${price_min}&price_max=${price_max}`;
       }
 
-      const response = await axios.get(`http://127.0.0.1:8000/api/cars/${query}`);
+      const response = await axios.get(`https://syedasadabbas.pythonanywhere.com/api/cars/${query}`);
       setOriginalCars(response.data); // Store the original cars data after filtering
       setCars(response.data.sort((a, b) => b.id - a.id)); // Sort filtered cars by id in descending order
     } catch (error) {
@@ -240,7 +240,7 @@ function Models() {
     console.log("Selected Car: ",selectedCar)
 
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/reserve/', {
+        const response = await fetch('https://syedasadabbas.pythonanywhere.com/api/reserve/', {
             method: 'POST',
             body: formData,
         });
