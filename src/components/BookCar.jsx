@@ -110,7 +110,7 @@ function BookCar() {
     formData.append('licence_back_image', licenceBackImage);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/reserve/', {
+      const response = await fetch('http://127.0.0.1:8000/api/appointment/', {
         method: 'POST',
         body: formData,
       });

@@ -199,8 +199,8 @@ function Models() {
 
     // Validate form
     if (!validateForm()) {
-      alert("Please fill all required fields.");
-      return;
+        alert("Please fill all required fields.");
+        return;
     }
 
     // Create a FormData object to handle both text and file data
@@ -221,32 +221,51 @@ function Models() {
     formData.append('licence_front_image', licenceFrontImage); // Adding files
     formData.append('licence_back_image', licenceBackImage);
 
-    try {
-      const response = await fetch('http://127.0.0.1:8000/api/reserve/', {
-        method: 'POST',
-        body: formData,
-      });
+    // Ensure selectedCar exists before adding car details
+    if (selectedCar) {
+        formData.append('car_type', selectedCar.car_type);
+        formData.append('car_price', selectedCar.car_price);
+        formData.append('car_make', selectedCar.car_make);
+        formData.append('car_color', selectedCar.car_colour);
+        formData.append('car_registration', selectedCar.car_registration); // Fixed spelling
+        formData.append('car_vin', selectedCar.vin);
 
-      if (response.ok) {
-        const responseData = await response.json();
-        if (responseData.status === "success") {
-          setModal(false);
-          setSuccessMessageVisible(true);
-          alert("Reservation was successful! Check your email to confirm.");
+        // If `car_picture` is a URL and not a file, ensure it's handled correctly.
+        if (selectedCar.car_picture instanceof File) {
+            formData.append('car_picture', selectedCar.car_picture);
         } else {
-          console.error("Error:", responseData.message);
-          alert("Reservation failed: " + (responseData.message || 'Unexpected error occurred.'));
+            formData.append('car_picture_url', selectedCar.car_picture); // If it’s a URL, append as string
         }
-      } else {
-        const errorData = await response.json();
-        console.error("Error:", errorData.message || 'Unexpected error occurred.');
-        alert("Reservation failed: " + (errorData.message || 'Unexpected error occurred.'));
-      }
-    } catch (error) {
-      console.error("Error submitting reservation:", error);
-      alert("An error occurred. Please try again.");
     }
-  };
+    console.log("Selected Car: ",selectedCar)
+
+    try {
+        const response = await fetch('http://127.0.0.1:8000/api/reserve/', {
+            method: 'POST',
+            body: formData,
+        });
+
+        if (response.ok) {
+            const responseData = await response.json();
+            if (responseData.status === "success") {
+                setModal(false);
+                setSuccessMessageVisible(true);
+                alert("Reservation was successful! Check your email to confirm.");
+            } else {
+                console.error("Error:", responseData.message);
+                alert("Reservation failed: " + (responseData.message || 'Unexpected error occurred.'));
+            }
+        } else {
+            const errorData = await response.json();
+            console.error("Error:", errorData.message || 'Unexpected error occurred.');
+            alert("Reservation failed: " + (errorData.message || 'Unexpected error occurred.'));
+        }
+    } catch (error) {
+        console.error("Error submitting reservation:", error);
+        alert("An error occurred. Please try again.");
+    }
+};
+
 
 
   // const [selectedFile, setSelectedFile] = useState(null);
