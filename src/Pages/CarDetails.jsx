@@ -14,7 +14,7 @@ function CarDetails() {
     const [mainImage, setMainImage] = useState(''); // State for main image
     const carBrand = car?.car_make.toLowerCase();
     const carLogo = carLogos[carBrand];
-    const baseUrl = 'http://127.0.0.1:8000/'
+    const baseUrl = 'https://syedasadabbas.pythonanywhere.com/'
 
     const bookBtn = () => {
         document
@@ -31,7 +31,7 @@ function CarDetails() {
             // Function to fetch car images from the API
             const fetchCarImages = async () => {
                 try {
-                    const response = await fetch(`http://127.0.0.1:8000/api/car-images/${encodeURIComponent(carName)}/`);
+                    const response = await fetch(`https://syedasadabbas.pythonanywhere.com/api/car-images/${encodeURIComponent(carName)}/`);
                     if (!response.ok) {
                         throw new Error('Failed to fetch car images');
                     }

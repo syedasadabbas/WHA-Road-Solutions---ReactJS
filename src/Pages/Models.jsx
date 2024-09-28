@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import "./Models.css";  // Import the CSS file
 
+
 // Main component to render car models
 function Models() {
   const [modal, setModal] = useState(false); //  class - active-modal
@@ -14,6 +15,8 @@ function Models() {
   const [uniqueBrands, setUniqueBrands] = useState([]);
   const [uniqueCarTypes, setUniqueCarTypes] = useState([]);
   const [selectedCar, setSelectedCar] = useState(null); // State for the selected car
+  const [isLoading, setIsLoading] = useState(false);
+
   const [filters, setFilters] = useState({
     car_make: "",
     car_type: "",
@@ -121,6 +124,7 @@ function Models() {
     setModal(false);
     setSelectedCar(null);
     setSuccessMessageVisible(false);
+    resetFormFields();
   };
 
   // Modal information state
@@ -192,6 +196,39 @@ function Models() {
       licenceBackImage !== null
     );
   };
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Check if this cookie string begins with the name we want
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  const resetFormFields = () => {
+    setName('');
+    setLastName('');
+    setPhone('');
+    setStreetAddress('');
+    setSuburb('');
+    setState('');
+    setPostcode('');
+    setLicence('');
+    setLicenceExpiry('');
+    setDob('');
+    setAge('');
+    setOption('');
+    setLicenceFrontImage(null);
+    setLicenceBackImage(null);
+  };
+
 
   // Confirm booking function
   const confirmBooking = async (e) => {
@@ -199,9 +236,13 @@ function Models() {
 
     // Validate form
     if (!validateForm()) {
-        alert("Please fill all required fields.");
-        return;
+      alert("Please fill all required fields.");
+      return;
     }
+
+
+
+    const csrfToken = getCookie('csrftoken'); // Function to get CSRF token
 
     // Create a FormData object to handle both text and file data
     const formData = new FormData();
@@ -223,48 +264,58 @@ function Models() {
 
     // Ensure selectedCar exists before adding car details
     if (selectedCar) {
-        formData.append('car_type', selectedCar.car_type);
-        formData.append('car_price', selectedCar.car_price);
-        formData.append('car_make', selectedCar.car_make);
-        formData.append('car_color', selectedCar.car_colour);
-        formData.append('car_registration', selectedCar.car_registration); // Fixed spelling
-        formData.append('car_vin', selectedCar.vin);
+      formData.append('car_type', selectedCar.car_type);
+      formData.append('car_price', selectedCar.car_price);
+      formData.append('car_make', selectedCar.car_make);
+      formData.append('car_color', selectedCar.car_colour);
+      formData.append('car_registration', selectedCar.car_registration); // Fixed spelling
+      formData.append('car_vin', selectedCar.vin);
 
-        // If `car_picture` is a URL and not a file, ensure it's handled correctly.
-        if (selectedCar.car_picture instanceof File) {
-            formData.append('car_picture', selectedCar.car_picture);
-        } else {
-            formData.append('car_picture_url', selectedCar.car_picture); // If it’s a URL, append as string
-        }
+      // If `car_picture` is a URL and not a file, ensure it's handled correctly.
+      if (selectedCar.car_picture instanceof File) {
+        formData.append('car_picture', selectedCar.car_picture);
+      } else {
+        formData.append('car_picture_url', selectedCar.car_picture); // If it’s a URL, append as string
+      }
     }
-    console.log("Selected Car: ",selectedCar)
+    console.log("Selected Car: ", selectedCar)
+    setIsLoading(true);
 
     try {
-        const response = await fetch('https://syedasadabbas.pythonanywhere.com/api/reserve/', {
-            method: 'POST',
-            body: formData,
-        });
+      const response = await fetch('https://syedasadabbas.pythonanywhere.com/api/reserve/', {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': csrfToken,
+          // 'Content-Type': 'application/json',
+        },
+        body: formData,
+      });
 
-        if (response.ok) {
-            const responseData = await response.json();
-            if (responseData.status === "success") {
-                setModal(false);
-                setSuccessMessageVisible(true);
-                alert("Reservation was successful! Check your email to confirm.");
-            } else {
-                console.error("Error:", responseData.message);
-                alert("Reservation failed: " + (responseData.message || 'Unexpected error occurred.'));
-            }
+      if (response.ok) {
+        const responseData = await response.json();
+        if (responseData.status === "success") {
+          setModal(false);
+          setSuccessMessageVisible(true);
+          alert("Car Reservation was successful!\nYou will be contacted soon to proceed further. Thanks!");
+          resetFormFields();
         } else {
-            const errorData = await response.json();
-            console.error("Error:", errorData.message || 'Unexpected error occurred.');
-            alert("Reservation failed: " + (errorData.message || 'Unexpected error occurred.'));
+          console.error("Error:", responseData.message);
+          alert("Reservation failed: " + (responseData.message || 'Unexpected error occurred.'));
         }
+      } else {
+        const errorData = await response.json();
+        console.error("Error:", errorData.message || 'Unexpected error occurred.');
+        alert("Reservation failed: " + (errorData.message || 'Unexpected error occurred.'));
+      }
     } catch (error) {
-        console.error("Error submitting reservation:", error);
-        alert("An error occurred. Please try again.");
+      console.error("Error submitting reservation:", error);
+      alert("An error occurred. Please try again.");
     }
-};
+    finally {
+      setIsLoading(false); // Hide loader and enable button
+    }
+
+  };
 
 
 
@@ -288,7 +339,7 @@ function Models() {
     navigate('/cardetails', { state: { car: { ...car, car_images: car.car_images } } });
     console.log(car);
   };
-  
+
 
   return (
     <>
@@ -435,7 +486,7 @@ function Models() {
             <div className="booking-modal__title">
               <h2>Complete Reservation</h2>
               <div className="X-mark" onClick={closeModal}>
-              <i  className="fa-solid fa-xmark"></i>
+                <i className="fa-solid fa-xmark"></i>
               </div>
             </div>
             {/* message */}
@@ -538,23 +589,28 @@ function Models() {
                       type="tel"
                       placeholder="Enter your phone number"
                       required
-                    ></input>
-                    <p className="error-modal">This field is required.</p>
+                      onKeyPress={(event) => {
+                        // Allow only numbers
+                        if (!/[0-9]/.test(event.key)) {
+                          event.preventDefault();
+                        }
+                      }}
+                    />
                   </span>
 
-                {/* Choose Your Option */}
-                <div className="info-form">
-                  <span>
-                    <label>Choose Your Option <b>*</b></label>
-                    <select value={option} onChange={handleOption} required>
-                      <option value="" disabled>Select an option</option>
-                      <option value="purchase">Purchase Car</option>
-                      <option value="rent">Rent Car</option>
-                      <option value="rent_to_own">Rent to Own Car</option>
-                    </select>
-                    <p className="error-modal">This field is required.</p>
-                  </span>
-                </div>
+                  {/* Choose Your Option */}
+                  <div className="info-form">
+                    <span>
+                      <label>Choose Your Option <b>*</b></label>
+                      <select value={option} onChange={handleOption} required>
+                        <option value="" disabled>Select an option</option>
+                        <option value="purchase">Purchase Car</option>
+                        <option value="rent">Rent Car</option>
+                        <option value="rent_to_own">Rent to Own Car</option>
+                      </select>
+                      <p className="error-modal">This field is required.</p>
+                    </span>
+                  </div>
                   {/* <span>
                     <label>
                       Email
@@ -656,7 +712,17 @@ function Models() {
                 </div>
 
                 <div className="reserve-button">
-                  <button type="submit">Reserve Now</button>
+                  <button
+                    type="submit"
+                    onClick={confirmBooking}
+                    disabled={isLoading} // Disable the button while loading
+                  >
+                    {isLoading ? (
+                      <span>Loading...</span> // Show loading text or spinner
+                    ) : (
+                      'Reserve Now'
+                    )}
+                  </button>
                   <button type="button" onClick={closeModal}>Close</button>
                 </div>
               </form>

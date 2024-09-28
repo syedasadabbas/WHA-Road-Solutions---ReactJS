@@ -1,12 +1,30 @@
 import React, { useState, useEffect } from "react";
 
+
 function BookCar() {
   const [modal, setModal] = useState(false);
 
   const [openAccordion, setOpenAccordion] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const toggleAccordion = (section) => {
     setOpenAccordion(openAccordion === section ? null : section); // Toggle logic
+  };
+  const resetFormFields = () => {
+    setName('');
+    setLastName('');
+    setPhone('');
+    setStreetAddress('');
+    setSuburb('');
+    setState('');
+    setPostcode('');
+    setLicence('');
+    setLicenceExpiry('');
+    setDob('');
+    setAge('');
+    setOption('');
+    setLicenceFrontImage(null);
+    setLicenceBackImage(null);
   };
 
   useEffect(() => {
@@ -108,6 +126,8 @@ function BookCar() {
     formData.append('option', option);
     formData.append('licence_front_image', licenceFrontImage); // Adding files
     formData.append('licence_back_image', licenceBackImage);
+    setIsLoading(true);
+
 
     try {
       const response = await fetch('https://syedasadabbas.pythonanywhere.com/api/appointment/', {
@@ -116,13 +136,17 @@ function BookCar() {
       });
 
       if (response.ok) {
-        alert("Reservation was successful! Check your email to confirm.");
+        alert("Your Appointment has been succcessfully booked!\nYou will be contacted soon for the visit. Thanks");
+        resetFormFields();
       } else {
         alert("Reservation failed. Please try again.");
       }
     } catch (error) {
       console.error("Error submitting reservation:", error);
       alert("An error occurred. Please try again.");
+    }
+    finally {
+      setIsLoading(false); // Hide loader and enable button
     }
   };
 
@@ -171,7 +195,19 @@ function BookCar() {
                           <i className="fas fa-phone"></i> {/* Icon for Phone/Mobile */}
                           Phone/Mobile <b>*</b>
                         </label>
-                        <input value={phone} onChange={handlePhone} type="tel" placeholder="Enter your phone number" required />
+                        <input
+                          value={phone}
+                          onChange={handlePhone}
+                          type="tel"
+                          placeholder="Enter your phone number"
+                          required
+                          onKeyPress={(event) => {
+                            // Allow only numbers
+                            if (!/[0-9]/.test(event.key)) {
+                              event.preventDefault();
+                            }
+                          }}
+                        />
                       </span>
                       <span>
                         <label>
@@ -274,7 +310,17 @@ function BookCar() {
 
                     {/* Submit button */}
                     <div className="info-form__submit">
-                      <button type="submit">Submit Booking</button>
+                      <button
+                        type="submit"
+                        onClick={confirmBooking}
+                        disabled={isLoading} // Disable the button while loading
+                      >
+                        {isLoading ? (
+                          <span>⏳</span> // Show loading text or spinner
+                        ) : (
+                          'Book Appointment'
+                        )}
+                      </button>
                     </div>
                   </form>
                 </div>
