@@ -19,12 +19,10 @@ function ChooseUs() {
                 <h4>Why Choose Us</h4>
                 <h2>Best valued deals you will ever find</h2>
                 <p>
-                  Discover the best deals you'll ever find with our unbeatable
-                  offers. We're dedicated to providing you with the best value
-                  for your money, so you can enjoy top-quality services and
-                  products without breaking the bank. Our deals are designed to
-                  give you the ultimate renting experience, so don't miss out on
-                  your chance to save big.
+                  At WHA Road Solution, we believe in delivering exceptional value and quality to our customers.
+                  Discover unbeatable offers that cater to all your driving needs, whether you're looking to purchase, rent, or rent to own.
+                  Our mission is to provide you with a top-notch experience without breaking the bank.
+                  Explore our amazing deals designed to elevate your driving experience and ensure you get the most out of your investment.
                 </p>
                 <a href="#home">
                   Find Details &nbsp;
@@ -37,8 +35,8 @@ function ChooseUs() {
                   <div className="text-container__right__box__text">
                     <h4>Cross Country Drive</h4>
                     <p>
-                      Take your driving experience to the next level with our
-                      top-notch vehicles for your cross-country adventures.
+                      Embark on unforgettable cross-country adventures with our premium selection of vehicles,
+                      designed for comfort, reliability, and performance on any terrain.
                     </p>
                   </div>
                 </div>
@@ -46,10 +44,10 @@ function ChooseUs() {
                   {" "}
                   <img src={Box2} alt="coin-img" />
                   <div className="text-container__right__box__text">
-                    <h4>All Inclusive Pricing</h4>
+                    <h4>All-Inclusive Pricing</h4>
                     <p>
-                      Get everything you need in one convenient, transparent
-                      price with our all-inclusive pricing policy.
+                      Enjoy the convenience of our all-inclusive pricing policy, where you receive everything you need
+                      in one transparent package, making budgeting a breeze.
                     </p>
                   </div>
                 </div>
@@ -59,8 +57,8 @@ function ChooseUs() {
                   <div className="text-container__right__box__text">
                     <h4>No Hidden Charges</h4>
                     <p>
-                      Enjoy peace of mind with our no hidden charges policy. We
-                      believe in transparent and honest pricing.
+                      Drive with confidence knowing there are no hidden charges.
+                      We pride ourselves on our honest and transparent pricing, ensuring you always know what to expect.
                     </p>
                   </div>
                 </div>

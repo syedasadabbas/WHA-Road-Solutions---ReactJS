@@ -39,11 +39,12 @@ function Hero() {
             <div className="hero-content__text">
               <h4>We Have A Road Solution</h4>
               <h1>
-                Save big with <span>WHA</span>  Road Solutions
+                Save big with <span>WHA</span>  Road Solution
               </h1>
               <p>
-                Purchase, Rent or Rent to Own the car of your dreams. Unbeatable prices, unlimited miles,
-                flexible pick-up options and much more.
+                Purchase, Rent, or Rent to Own the car of your dreams. Unbeatable prices, unlimited miles,
+                flexible pick-up options, and much more. WHA Road Solution is your one-stop solution for
+                all your road needs.
               </p>
               <div className="hero-content__text__btns">
                 <Link
@@ -57,7 +58,7 @@ function Hero() {
                   onClick={bookBtn}
                   className="hero-content__text__btns__learn-more"
                   to="/"
-                  style={{backgroundColor:"black", color:"white"}}
+                  style={{ backgroundColor: "black", color: "white" }}
                 >
                   Book Appointment &nbsp; <i className="fa-solid fa-circle-check"></i>
                 </Link>

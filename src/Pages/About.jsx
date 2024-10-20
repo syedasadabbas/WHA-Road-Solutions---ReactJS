@@ -22,36 +22,42 @@ function About() {
               <h3>About Company</h3>
               <h2>You start the engine and your adventure begins</h2>
               <p>
-                Certain but she but shyness why cottage. Guy the put instrument
-                sir entreaties affronting. Pretended exquisite see cordially the
-                you. Weeks quiet do vexed or whose. Motionless if no to
-                affronting imprudence no precaution. My indulged as disposal
-                strongly attended.
+                At WHA Road Solution, an Australian-based company, we're dedicated to providing the ultimate road solutions tailored to meet the diverse needs of our customers across Australia.
+                Whether you're looking to purchase a new vehicle to explore the stunning landscapes of our great nation, rent a car for a weekend getaway with friends, or opt for our flexible rent-to-own program,
+                we have a comprehensive selection of vehicles that perfectly match your requirements. Our diverse fleet includes everything from compact cars for city driving to spacious SUVs for family adventures, ensuring that you find the ideal vehicle for any occasion.
               </p>
               <div className="about-main__text__icons">
                 <div className="about-main__text__icons__box">
                   <img src={Box1} alt="car-icon" />
                   <span>
-                    <h4>20</h4>
-                    <p>Car Types</p>
+                    <h4>25+</h4>
+                    <p>Car Brands</p>
                   </span>
                 </div>
                 <div className="about-main__text__icons__box">
                   <img src={Box2} alt="car-icon" />
                   <span>
-                    <h4>85</h4>
-                    <p>Rental Outlets</p>
+                    <h4>5</h4>
+                    <p>Service Centers</p>
                   </span>
                 </div>
                 <div className="about-main__text__icons__box">
                   <img src={Box3} alt="car-icon" className="last-fk" />
                   <span>
-                    <h4>75</h4>
-                    <p>Repair Shop</p>
+                    <h4>14</h4>
+                    <p>Repair Shops</p>
                   </span>
                 </div>
               </div>
             </div>
+          </div>
+          <div className="about-main__text" style={{justifyItems: "center", textAlign: "center"}}>
+          <h2 style={{justifyItems: "center"}}>Our Mission</h2>
+            <p>
+              Our mission is to deliver unparalleled value and convenience at every step of your journey. We understand that choosing the right vehicle is more than just a transaction; it’s about creating memorable experiences on the road. That’s why we prioritize exceptional customer service, offering personalized assistance to guide you through your options and help you make informed decisions.
+              We pride ourselves on our transparent pricing, with no hidden fees, so you can confidently plan your budget. Our flexible booking options allow you to reserve your vehicle online with ease, and our dedicated team is always on hand to assist you throughout the process, from the moment you select your vehicle to the day you drive off into your next adventure.
+              With WHA Road Solution, your road adventures begin with confidence and peace of mind. We are committed to ensuring that every journey is safe, enjoyable, and tailored to your unique needs. Discover the freedom of the open road with us, and experience the difference of choosing a service that genuinely cares about your driving experience in Australia.
+            </p>
           </div>
           <PlanTrip />
         </div>

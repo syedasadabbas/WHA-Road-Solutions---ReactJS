@@ -130,7 +130,9 @@ function BookCar() {
 
 
     try {
-      const response = await fetch('https://syedasadabbas.pythonanywhere.com/api/appointment/', {
+      const response = await fetch('https://liveonline.pythonanywhere.com/api/appointment/', {
+        // const response = await fetch('http://127.0.0.1:8000/api/appointment/', {
+
         method: 'POST',
         body: formData,
       });
@@ -160,7 +162,7 @@ function BookCar() {
             {/* Accordion for entire form */}
             <div className="accordion-section">
               <div className="accordion-header" onClick={() => toggleAccordion('personalInfo')}>
-                <h4>Personal Information</h4>
+                <h4>Booking Form for Appointment</h4>
                 <span className={`accordion-icon ${openAccordion === 'personalInfo' ? "open" : ""}`}>
                   {openAccordion === 'personalInfo' ? (
                     <i className="fas fa-chevron-up"></i> // Use Font Awesome chevron up icon

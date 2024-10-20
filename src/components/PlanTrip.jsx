@@ -9,35 +9,35 @@ function PlanTrip() {
         <div className="container">
           <div className="plan-container">
             <div className="plan-container__title">
-              <h3>Plan your trip now</h3>
-              <h2>Quick & easy car rental</h2>
+              <h3>Plan your journey now</h3>
+              <h2>Quick & easy car solutions</h2>
             </div>
 
             <div className="plan-container__boxes">
               <div className="plan-container__boxes__box">
                 <img src={SelectCar} alt="icon_img" />
-                <h3>Select Car</h3>
+                <h3>Select a Car and Submit Your Booking Form or Just Book an Appointment</h3>
                 <p>
-                  We offers a big range of vehicles for all your driving needs.
-                  We have the perfect car to meet your needs
+                  We offer a wide range of vehicles for all your needs. Whether you’re looking to
+                  <strong> buy, rent, or rent to own</strong>, we have the perfect car to suit your journey.
                 </p>
               </div>
 
               <div className="plan-container__boxes__box">
                 <img src={Contact} alt="icon_img" />
-                <h3>Contact Operator</h3>
+                <h3>A Specialist Will Contact You to Finalize Your Booking</h3>
                 <p>
-                  Our knowledgeable and friendly operators are always ready to
-                  help with any questions or concerns
+                  Our knowledgeable Car Specialist will assist you in finalizing your purchase, rental, or
+                  rent-to-own plan. If you’ve booked an appointment, we’ll confirm your appointment date and time.
                 </p>
               </div>
 
               <div className="plan-container__boxes__box">
                 <img src={Drive} alt="icon_img" />
-                <h3>Let's Drive</h3>
+                <h3>Let's Hit the Road</h3>
                 <p>
-                  Whether you're hitting the open road, we've got you covered
-                  with our wide range of cars
+                  Once your booking is confirmed, you’re ready to drive! Whether you’re buying, renting, or
+                  choosing a rent-to-own plan, we’ve got you covered with our wide range of cars.
                 </p>
               </div>
             </div>

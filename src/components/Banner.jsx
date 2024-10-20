@@ -5,9 +5,9 @@ function Banner() {
         <div className="container">
           <div className="banner-content">
             <div className="banner-content__text">
-              <h2>Save big with our cheap car rental!</h2>
+              <h2>Save Big with WHA Road Solutions!</h2>
               <p>
-                Top Airports. Local Suppliers. <span>24/7</span> Support.
+                Whether you're looking to purchase, rent, or rent to own, we’ve got unbeatable deals for every option. From top airports to local suppliers, our network offers the best solutions with  <span>24/7</span> support to ensure your journey is seamless and hassle-free.
               </p>
             </div>
           </div>
