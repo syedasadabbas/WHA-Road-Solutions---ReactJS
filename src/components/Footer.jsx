@@ -14,15 +14,15 @@ function Footer() {
               </li>
 
               <li>
-                <a href="tel:123456789">
+                {/* <a href="tel:123456789"> */}
                   <i className="fa-solid fa-phone"></i> &nbsp; (123) -456-789
-                </a>
+                {/* </a> */}
               </li>
 
               <li>
                 <a
                   href="mailto: 
-                carrental@gmail.com"
+                wharoadsolution@gmail.com"
                 >
                   <i className="fa-solid fa-envelope"></i>
                   &nbsp; wharoadsolution@gmail.com
@@ -42,21 +42,24 @@ function Footer() {
             </ul>
 
             <ul className="footer-content__2">
-              <li>Company</li>
+              <li>Navigate</li>
               <li>
-                <a href="#home">Gallery</a>
+                <a href="/">Home</a>
               </li>
               <li>
-                <a href="#home">Careers</a>
+                <a href="/about">About Us</a>
               </li>
               <li>
-                <a href="#home">Mobile</a>
+                <a href="/models">Vehicle Models</a>
               </li>
               <li>
-                <a href="#home">Blog</a>
+                <a href="/testimonials">Client Testimonials</a>
               </li>
               <li>
-                <a href="#home">How we work</a>
+                <a href="/team">Our Team</a>
+              </li>
+              <li>
+                <a href="/contact">Contact Us</a>
               </li>
             </ul>
 

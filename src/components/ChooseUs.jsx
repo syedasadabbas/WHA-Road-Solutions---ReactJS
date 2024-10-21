@@ -24,8 +24,8 @@ function ChooseUs() {
                   Our mission is to provide you with a top-notch experience without breaking the bank.
                   Explore our amazing deals designed to elevate your driving experience and ensure you get the most out of your investment.
                 </p>
-                <a href="#home">
-                  Find Details &nbsp;
+                <a href="/models">
+                  View Cars &nbsp;
                   <i className="fa-solid fa-angle-right"></i>
                 </a>
               </div>
