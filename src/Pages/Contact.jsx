@@ -96,15 +96,15 @@ function Contact() {
                 research, development as well as a learning specialist. Over 15
                 years of experience.
               </p>
-              {/* <a href="tel:(123) 456-7869"> */}
+              <a href="tel:(123) 456-7869">
                 <i className="fa-solid fa-phone"></i>&nbsp; (123) 456-7869
-              {/* </a> */}
+              </a>
               <a href="mailto:wharoadsolution@gmail.com?subject=Car%20Booking%20Inquiry&body=Hello%20WHA%20Team!,">
                 <i className="fa-solid fa-envelope"></i>&nbsp; wharoadsolution@gmail.com
               </a>
-              {/* <a href="/"> */}
+              <a href="https://maps.app.goo.gl/i9kd19i9aBt5gaHz8">
                 <i className="fa-solid fa-location-dot"></i>&nbsp; Perth, Australia
-              {/* </a> */}
+              </a>
             </div>
             <div className="contact-div__form">
               <form onSubmit={handleSubmit}>
