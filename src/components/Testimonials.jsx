@@ -1,87 +1,144 @@
-import Img2 from "../images/testimonials/pfp1.jpg";
-import Img3 from "../images/testimonials/pfp2.jpg";
-
 function Testimonials() {
   return (
     <>
       <section className="testimonials-section">
-        <div className="container">
-          <div className="testimonials-content">
-            <div className="testimonials-content__title">
-              <h4>Reviewed by People</h4>
-              <h2>Client Testimonials</h2>
-              <p>
-                Discover the positive impact we've made on our clients by reading through their testimonials.
-                Our clients have experienced our exceptional service and results, and they’re eager to share their
-                positive experiences with you. Join the community of satisfied customers who have trusted WHA Road Solution
-                for their driving needs.
-              </p>
-            </div>
+  <div className="container">
+    <div className="testimonials-content">
+      <div className="testimonials-content__title">
+        <h4>Reviewed by People</h4>
+        <h2>Client Testimonials</h2>
+        <p>
+          Discover the positive impact we've made on our clients by reading through their testimonials.
+          Our clients have experienced our exceptional service and results, and they’re eager to share their
+          positive experiences with you. Join the community of satisfied customers who have trusted WHA Road Solution
+          for their driving needs.
+        </p>
+      </div>
 
-            <div className="all-testimonials">
-              <div className="all-testimonials__box">
-                <span className="quotes-icon">
-                  <i className="fa-solid fa-quote-right"></i>
-                </span>
-                <p>
-                  "We rented a car from this website and had an amazing experience!
-                  The booking process was straightforward, and the rental rates were very affordable.
-                  The car was clean and ready on time, which made our trip enjoyable."
-                </p>
-                <div className="all-testimonials__box__name">
-                  <div className="all-testimonials__box__name__profile">
-                    <img src={Img2} alt="Parry Hotter" />
-                    <span>
-                      <h4>Parry Hotter</h4>
-                      <p>Belgrade</p>
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="all-testimonials__box box-2">
-                <span className="quotes-icon">
-                  <i className="fa-solid fa-quote-right"></i>
-                </span>
-                <p>
-                  "The car was in great condition and made our trip even better.
-                  We drove across beautiful landscapes, and it was a seamless experience.
-                  I highly recommend this car rental website for anyone looking for quality service!"
-                </p>
-                <div className="all-testimonials__box__name">
-                  <div className="all-testimonials__box__name__profile">
-                    <img src={Img3} alt="Ron Rizzly" />
-                    <span>
-                      <h4>Ron Rizzly</h4>
-                      <p>Novi Sad</p>
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="all-testimonials__box box-3">
-                <span className="quotes-icon">
-                  <i className="fa-solid fa-quote-right"></i>
-                </span>
-                <p>
-                  "I was pleasantly surprised by the level of service I received.
-                  The staff were friendly and helpful, making sure I had everything I needed for my trip.
-                  The vehicle performed exceptionally well, and I will definitely be using WHA Road Solution again!"
-                </p>
-                <div className="all-testimonials__box__name">
-                  <div className="all-testimonials__box__name__profile">
-                    <img src={Img3} alt="Anna Smith" />
-                    <span>
-                      <h4>Anna Smith</h4>
-                      <p>Melbourne</p>
-                    </span>
-                  </div>
-                </div>
-              </div>
+      <div className="all-testimonials">
+        {/* Testimonial 1 - Car Purchase */}
+        <div className="all-testimonials__box">
+          <span className="quotes-icon">
+            <i className="fa-solid fa-quote-right"></i>
+          </span>
+          <p>
+            "I recently purchased a car from WHA Road Solution, and the experience was exceptional! 
+            The staff were knowledgeable and guided me through the entire process, making it easy to find the perfect vehicle.
+            Highly recommend them for anyone looking to buy a car!"
+          </p>
+          <div className="all-testimonials__box__name">
+            <div className="all-testimonials__box__name__profile">
+              <span>
+                <h4>Lucas Anderson</h4>
+                <p>Brisbane</p>
+              </span>
             </div>
           </div>
         </div>
-      </section>
+
+        {/* Testimonial 2 - Car Rental */}
+        <div className="all-testimonials__box">
+          <span className="quotes-icon">
+            <i className="fa-solid fa-quote-right"></i>
+          </span>
+          <p>
+            "We rented a car from WHA Road Solution during our family trip, and it was fantastic! 
+            The car was clean and well-maintained, and the customer service was top-notch. 
+            I’ll definitely rent from them again!"
+          </p>
+          <div className="all-testimonials__box__name">
+            <div className="all-testimonials__box__name__profile">
+              <span>
+                <h4>Emily Nguyen</h4>
+                <p>Sydney</p>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Testimonial 3 - Rent to Own */}
+        <div className="all-testimonials__box">
+          <span className="quotes-icon">
+            <i className="fa-solid fa-quote-right"></i>
+          </span>
+          <p>
+            "The rent-to-own option offered by WHA Road Solution was perfect for me! 
+            I was able to drive my dream car while working towards owning it. 
+            The process was straightforward, and the team was very supportive throughout!"
+          </p>
+          <div className="all-testimonials__box__name">
+            <div className="all-testimonials__box__name__profile">
+              <span>
+                <h4>Charlotte Brown</h4>
+                <p>Melbourne</p>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Testimonial 4 - Car Purchase */}
+        <div className="all-testimonials__box">
+          <span className="quotes-icon">
+            <i className="fa-solid fa-quote-right"></i>
+          </span>
+          <p>
+            "I had a fantastic experience purchasing my first car here! 
+            The staff were patient and helped me understand everything, 
+            from financing to maintenance. I'm thrilled with my new ride!"
+          </p>
+          <div className="all-testimonials__box__name">
+            <div className="all-testimonials__box__name__profile">
+              <span>
+                <h4>Daniel Smith</h4>
+                <p>Perth</p>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Testimonial 5 - Car Rental */}
+        <div className="all-testimonials__box">
+          <span className="quotes-icon">
+            <i className="fa-solid fa-quote-right"></i>
+          </span>
+          <p>
+            "Rented a car for a weekend getaway and it was a seamless experience! 
+            The booking was easy, the car was ready when I arrived, 
+            and it made our trip so much fun. Thank you, WHA!"
+          </p>
+          <div className="all-testimonials__box__name">
+            <div className="all-testimonials__box__name__profile">
+              <span>
+                <h4>Sarah Wilson</h4>
+                <p>Adelaide</p>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Testimonial 6 - Rent to Own */}
+        <div className="all-testimonials__box">
+          <span className="quotes-icon">
+            <i className="fa-solid fa-quote-right"></i>
+          </span>
+          <p>
+            "The rent-to-own program at WHA Road Solution is incredible! 
+            I love being able to test out the car while making payments towards ownership. 
+            The process was clear and the team was so helpful!"
+          </p>
+          <div className="all-testimonials__box__name">
+            <div className="all-testimonials__box__name__profile">
+              <span>
+                <h4>Michael Johnson</h4>
+                <p>Gold Coast</p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     </>
   );
 }

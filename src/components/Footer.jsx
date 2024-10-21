@@ -76,10 +76,9 @@ function Footer() {
                 <p>Subscribe your Email address for latest news & updates.</p>
               </li>
               <li>
-                <input type="email" placeholder="Enter Email Address"></input>
-              </li>
-              <li>
-                <button className="submit-email">Submit</button>
+                <a href="/contact">
+                <button className="submit-email">To Contact Us Form</button>
+                </a>
               </li>
             </ul>
           </div>
