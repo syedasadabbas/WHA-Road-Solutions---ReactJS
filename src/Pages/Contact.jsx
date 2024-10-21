@@ -102,6 +102,18 @@ function Contact() {
               <a href="mailto:wharoadsolution@gmail.com?subject=Car%20Booking%20Inquiry&body=Hello%20WHA%20Team!,">
                 <i className="fa-solid fa-envelope"></i>&nbsp; wharoadsolution@gmail.com
               </a>
+              {/* Embed Google Map */}
+              <div className="map-container">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11386.388701769723!2d115.86430722297126!3d-31.955643740395953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32966cdb47733d%3A0x304f0b535df55d0!2sPerth%20WA%2C%20Australia!5e0!3m2!1sen!2s!4v1729503971559!5m2!1sen!2s" 
+                  width="300" 
+                  height="250" 
+                  style={{ border: 0 }} 
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade">
+                </iframe>
+              </div>
               <a href="https://maps.app.goo.gl/i9kd19i9aBt5gaHz8">
                 <i className="fa-solid fa-location-dot"></i>&nbsp; Perth, Australia
               </a>
