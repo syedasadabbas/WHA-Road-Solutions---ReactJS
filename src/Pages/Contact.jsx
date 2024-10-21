@@ -99,9 +99,13 @@ function Contact() {
               <a href="tel:(123) 456-7869">
                 <i className="fa-solid fa-phone"></i>&nbsp; (123) 456-7869
               </a>
-              <a href="mailto:wharoadsolution@gmail.com?subject=Car%20Booking%20Inquiry&body=Hello%20WHA%20Team!,">
-                <i className="fa-solid fa-envelope"></i>&nbsp; wharoadsolution@gmail.com
-              </a>
+              <a
+                  href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRvwTgrcxCGWCMSKTXFSJwLncHbCJWBmndzRPzPSCZHHGqxLxRBnPtpbBcVZXgNfpxLCTJV"
+                  onClick={() => window.location.href = 'mailto:wharoadsolution@gmail.com'}
+                >
+                  <i className="fa-solid fa-envelope"></i>
+                  &nbsp; wharoadsolution@gmail.com
+                </a>
               {/* Embed Google Map */}
               <div className="map-container">
                 <iframe 

@@ -21,8 +21,8 @@ function Footer() {
 
               <li>
                 <a
-                  href="mailto: 
-                wharoadsolution@gmail.com"
+                  href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRvwTgrcxCGWCMSKTXFSJwLncHbCJWBmndzRPzPSCZHHGqxLxRBnPtpbBcVZXgNfpxLCTJV"
+                  onClick={() => window.location.href = 'mailto:wharoadsolution@gmail.com'}
                 >
                   <i className="fa-solid fa-envelope"></i>
                   &nbsp; wharoadsolution@gmail.com
