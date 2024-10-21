@@ -14,9 +14,9 @@ function Footer() {
               </li>
 
               <li>
-                {/* <a href="tel:123456789"> */}
-                  <i className="fa-solid fa-phone"></i> &nbsp; (123) -456-789
-                {/* </a> */}
+                <a href="tel:(123) 456-7869">
+                <i className="fa-solid fa-phone"></i>&nbsp; (123) 456-7869
+              </a>
               </li>
 
               <li>
