@@ -57,7 +57,7 @@ function Contact() {
           <span>✅ Thank You for your response.</span><br />
           <span>Your message has been sent to <strong>wharoadsolution</strong> successfully!</span><br />
           <span>You will be contacted soon through the email you provided.</span>
-      </>);
+        </>);
         // Clear the form after successful submission
         setFormData({
           fullName: "",
@@ -100,23 +100,15 @@ function Contact() {
                 <i className="fa-solid fa-phone"></i>&nbsp; (123) 456-7869
               </a>
               <a
-                  href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRvwTgrcxCGWCMSKTXFSJwLncHbCJWBmndzRPzPSCZHHGqxLxRBnPtpbBcVZXgNfpxLCTJV"
-                  onClick={() => window.location.href = 'mailto:wharoadsolution@gmail.com'}
-                >
-                  <i className="fa-solid fa-envelope"></i>
-                  &nbsp; wharoadsolution@gmail.com
-                </a>
+                href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRvwTgrcxCGWCMSKTXFSJwLncHbCJWBmndzRPzPSCZHHGqxLxRBnPtpbBcVZXgNfpxLCTJV"
+                onClick={() => window.location.href = 'mailto:wharoadsolution@gmail.com'}
+              >
+                <i className="fa-solid fa-envelope"></i>
+                &nbsp; wharoadsolution@gmail.com
+              </a>
               {/* Embed Google Map */}
               <div className="map-container">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11386.388701769723!2d115.86430722297126!3d-31.955643740395953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32966cdb47733d%3A0x304f0b535df55d0!2sPerth%20WA%2C%20Australia!5e0!3m2!1sen!2s!4v1729503971559!5m2!1sen!2s" 
-                  width="300" 
-                  height="250" 
-                  style={{ border: 0 }} 
-                  allowFullScreen="" 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade">
-                </iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27044.015081053996!2d115.94472873408523!3d-32.082718783500454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32961cabdb8cc7%3A0x504f0b535df46e0!2sHuntingdale%20WA%206110%2C%20Australia!5e0!3m2!1sen!2s!4v1729583516291!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               </div>
               <a href="https://maps.app.goo.gl/i9kd19i9aBt5gaHz8">
                 <i className="fa-solid fa-location-dot"></i>&nbsp; Perth, Australia
