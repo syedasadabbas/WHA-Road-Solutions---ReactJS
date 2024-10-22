@@ -1,224 +1,296 @@
 /* Models.css */
 
 .filter-bar {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .filter-bar div {
-    flex: 1;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3; /* Added missing colon here */
-  }
-  .custom-button {
-    background-color: #ff4d30;
-    color: white;
-    padding: 0;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.35);
-    transition: all 0.3s;
-    border: none;
-    cursor: pointer;
-    margin: 5px;
-    margin-top: 25;
-    font-weight: 600;
-    height: 50px;
-    width: 330px;
-  }
-  
-  .custom-button:hover {
-    background-color: #e6432a; /* Darker shade for hover */
-    box-shadow: 0 12px 18px 0 rgba(255, 83, 48, 0.45); /* Enhance shadow on hover */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filter-bar div {
+  flex: 1;
+}
+
+button {
+  padding: 8px 12px;
+  border: 2px solid #ddd;
+  background-color: #f9f9f9;
+  color: #333;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff4d30;
+  color: white;
+  /* Added missing colon here */
+}
+
+button.active {
+  background-color: #ff4d30;
+  color: #fff;
+  cursor: default;
+}
+
+button.disabled {
+  color: #999;
+  cursor: not-allowed;
+}
+
+.custom-button {
+  background-color: #ff4d30;
+  color: white;
+  padding: 0;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.35);
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  margin-top: 25;
+  font-weight: 600;
+  height: 50px;
+  width: 330px;
+}
+
+.custom-button:hover {
+  background-color: #e6432a;
+  /* Darker shade for hover */
+  box-shadow: 0 12px 18px 0 rgba(255, 83, 48, 0.45);
+  /* Enhance shadow on hover */
+}
+
+.custom-button-sort {
+  background-color: #ff4d30;
+  color: white;
+  padding: 0;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.35);
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  font-weight: 600;
+  height: 50px;
+  width: 120px;
+}
+
+.custom-button-sort:hover {
+  background-color: #e6432a;
+  /* Darker shade for hover */
+  box-shadow: 0 12px 18px 0 rgba(255, 83, 48, 0.45);
+  /* Enhance shadow on hover */
+}
+
+.custom-remove-button-sort {
+  background-color: black;
+  color: white;
+  padding: 0;
+  border-radius: 50px;
+  box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.35);
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+  font-weight: 600;
+  height: 50px;
+  width: 120px;
+}
+
+.custom-remove-button-sort:hover {
+  background-color: #e6432a;
+  /* Darker shade for hover */
+  box-shadow: 0 12px 18px 0 rgba(255, 83, 48, 0.45);
+  /* Enhance shadow on hover */
+}
+
+.select-input {
+  background-color: white;
+  color: black;
+  border: 1px solid #cfcfcf;
+  outline: none;
+  padding: 1.5rem 3rem;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: all 0.3s;
+  cursor: pointer;
+  margin: 5px;
+  font-weight: 600;
+  height: 50px;
+  width: 330px;
+}
+
+.sorting-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.sorting-radio {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  /* Add cursor pointer to indicate it's clickable */
+  font-size: 10px;
+  /* Increase text size */
+}
+
+.sorting-radio input[type="radio"] {
+  width: 15px;
+  /* Make radio button larger */
+  height: 15px;
+  appearance: none;
+  /* Hide default radio button styling */
+  border: 2px solid #ccc;
+  /* Add custom border */
+  border-radius: 50%;
+  /* Make it round */
+  display: inline-block;
+  position: relative;
+  outline: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  /* Add smooth transitions */
+}
+
+.sorting-radio input[type="radio"]:hover {
+  border-color: #ff4d30;
+  /* Change border color on hover */
+}
+
+.sorting-radio input[type="radio"]:checked {
+  background-color: #ff4d30;
+  /* Set checked color */
+  border-color: #ff4d30;
+}
+
+.sorting-radio input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  /* Adjust size of inner circle */
+  height: 5px;
+  background-color: white;
+  /* White inner circle */
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Center the circle */
+}
+
+.sorting-radio label {
+  font-weight: bold;
+  /* Make the label bold */
+  transition: color 0.3s ease;
+  /* Smooth transition for label color */
+}
+
+.sorting-radio input[type="radio"]:checked+label {
+  color: #ff4d30;
+  /* Change label color when radio is checked */
+}
+
+@media (max-width: 1000px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .custom-button-sort {
-    background-color: #ff4d30;
-    color: white;
-    padding: 0;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.35);
-    transition: all 0.3s;
-    border: none;
-    cursor: pointer;
-    margin: 5px;
-    font-weight: 600;
-    height: 50px;
-    width: 120px;
-  }
-  
-  .custom-button-sort:hover {
-    background-color: #e6432a; /* Darker shade for hover */
-    box-shadow: 0 12px 18px 0 rgba(255, 83, 48, 0.45); /* Enhance shadow on hover */
-  }
-
-  .custom-remove-button-sort {
-    background-color: black;
-    color: white;
-    padding: 0;
-    border-radius: 50px;
-    box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.35);
-    transition: all 0.3s;
-    border: none;
-    cursor: pointer;
-    margin-right: 5px;
-    font-weight: 600;
-    height: 50px;
-    width: 120px;
-  }
-  
-  .custom-remove-button-sort:hover {
-    background-color: #e6432a; /* Darker shade for hover */
-    box-shadow: 0 12px 18px 0 rgba(255, 83, 48, 0.45); /* Enhance shadow on hover */
-  }
-
-  .select-input {
-    background-color: white;
-    color: black;
-    border: 1px solid #cfcfcf;
-    outline: none;
-    padding: 1.5rem 3rem;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    transition: all 0.3s;
-    cursor: pointer;
-    margin: 5px;
-    font-weight: 600;
-    height: 50px;
-    width: 330px;
-  }
-  
   .sorting-bar {
-    display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
   }
+}
 
-  .sorting-radio {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
-    font-size: 10px;  /* Increase text size */
-  }
-  
-  .sorting-radio input[type="radio"] {
-    width: 15px;  /* Make radio button larger */
-    height: 15px;
-    appearance: none; /* Hide default radio button styling */
-    border: 2px solid #ccc; /* Add custom border */
-    border-radius: 50%; /* Make it round */
-    display: inline-block;
-    position: relative;
-    outline: none;
-    transition: background-color 0.3s ease, border-color 0.3s ease; /* Add smooth transitions */
-  }
-  
-  .sorting-radio input[type="radio"]:hover {
-    border-color: #ff4d30; /* Change border color on hover */
-  }
-  
-  .sorting-radio input[type="radio"]:checked {
-    background-color: #ff4d30; /* Set checked color */
-    border-color: #ff4d30;
-  }
-  
-  .sorting-radio input[type="radio"]:checked::before {
-    content: "";
-    position: absolute;
-    width: 5px;  /* Adjust size of inner circle */
-    height: 5px;
-    background-color: white;  /* White inner circle */
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Center the circle */
-  }
-  
-  .sorting-radio label {
-    font-weight: bold; /* Make the label bold */
-    transition: color 0.3s ease; /* Smooth transition for label color */
-  }
-  
-  .sorting-radio input[type="radio"]:checked + label {
-    color: #ff4d30; /* Change label color when radio is checked */
-  }
+.remove-filter-button {
+  background-color: #110605;
+  color: white;
+  padding: 0;
+  border-radius: 50px;
+  box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.35);
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  margin-top: 25;
+  font-weight: 600;
+  height: 50px;
+  width: 330px;
+}
 
-  @media (max-width: 1000px) {
-    .filter-bar {
-      flex-direction: column;
-      align-items: center;
-    }
-    .sorting-bar{
-      flex-direction: column;
-      align-items: center;
-    }
-  }
+.remove-filter-button:hover {
+  background-color: #e6432a;
+  /* Darker shade for hover */
+  box-shadow: 0 12px 18px 0 rgba(255, 83, 48, 0.45);
+  /* Enhance shadow on hover */
+}
 
-  .remove-filter-button {
-    background-color: #110605;
-    color: white;
-    padding: 0;
-    border-radius: 50px;
-    box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.35);
-    transition: all 0.3s;
-    border: none;
-    cursor: pointer;
-    margin: 5px;
-    margin-top: 25;
-    font-weight: 600;
-    height: 50px;
-    width: 330px;
-  }
-  
-  .remove-filter-button:hover {
-    background-color: #e6432a; /* Darker shade for hover */
-    box-shadow: 0 12px 18px 0 rgba(255, 83, 48, 0.45); /* Enhance shadow on hover */
-  }
-
-  /* Apply the same styles for the select element */
+/* Apply the same styles for the select element */
 .info-form span select {
-  padding: 14px 15px; /* Same padding as input */
-  background-color: #dbdbdb; /* Same background color as input */
-  color: #555; /* Same text color as input */
-  font-size: 1.5rem; /* Same font size as input */
-  font-weight: 500; /* Same font weight as input */
-  outline: none; /* Same outline as input */
-  border: none; /* Same border style as input */
-  width: 100%; /* Ensure it fills the width */
+  padding: 14px 15px;
+  /* Same padding as input */
+  background-color: #dbdbdb;
+  /* Same background color as input */
+  color: #555;
+  /* Same text color as input */
+  font-size: 1.5rem;
+  /* Same font size as input */
+  font-weight: 500;
+  /* Same font weight as input */
+  outline: none;
+  /* Same outline as input */
+  border: none;
+  /* Same border style as input */
+  width: 100%;
+  /* Ensure it fills the width */
 }
 
 /* Optional: Add a custom arrow */
 .info-form span select {
-  appearance: none; /* Remove default dropdown arrow */
+  appearance: none;
+  /* Remove default dropdown arrow */
   /* background-image: url('path/to/your/arrow-icon.svg'); Add custom arrow image */
   background-repeat: no-repeat;
-  background-position: right 10px center; /* Position for the custom arrow */
+  background-position: right 10px center;
+  /* Position for the custom arrow */
 }
 
 /* Optional: Add hover and focus styles */
 .info-form span select:focus {
-  border-color: #66afe9; /* Change border color on focus if applicable */
-  outline: none; /* Remove outline */
-  box-shadow: 0 0 5px rgba(102, 175, 233, .6); /* Optional focus effect */
+  border-color: #66afe9;
+  /* Change border color on focus if applicable */
+  outline: none;
+  /* Remove outline */
+  box-shadow: 0 0 5px rgba(102, 175, 233, .6);
+  /* Optional focus effect */
 }
 
 /* Style the dropdown options (limited support) */
 .info-form span select option {
-  background-color: white; /* Set background color of options */
-  color: #555; /* Text color for options */
+  background-color: white;
+  /* Set background color of options */
+  color: #555;
+  /* Text color for options */
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
 }

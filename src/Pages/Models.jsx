@@ -26,6 +26,10 @@ function Models() {
   const [sortOrder, setSortOrder] = useState("");
   const [successMessageVisible, setSuccessMessageVisible] = useState(true); // For tracking success message visibility
 
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6; // You can adjust the number of items per page
+
   // Fetch all cars without filters
   const fetchAllCars = async () => {
     try {
@@ -346,6 +350,17 @@ function Models() {
     console.log(car);
   };
 
+  // Pagination logic
+  const indexOfLastCar = currentPage * itemsPerPage;
+  const indexOfFirstCar = indexOfLastCar - itemsPerPage;
+  const currentCars = cars.slice(indexOfFirstCar, indexOfLastCar);
+
+  const totalPages = Math.ceil(cars.length / itemsPerPage);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
 
   return (
     <>
@@ -439,7 +454,7 @@ function Models() {
 
           {/* Car models listing */}
           <div className="models-div">
-            {cars.map((car) => (
+            {currentCars.map((car) => (
               <div className="models-div__box" key={car.id}>
                 <div className="models-div__box__img">
                   <img src={car.car_picture || "/images/default-car.png"} alt={car.car_model} />
@@ -482,6 +497,18 @@ function Models() {
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+          {/* Pagination Controls */}
+          <div className="pagination" style={{justifyContent: 'center'}}>
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index + 1}
+                onClick={() => paginate(index + 1)}
+                className={currentPage === index + 1 ? 'active' : ''}
+              >
+                {index + 1}
+              </button>
             ))}
           </div>
           {/* Modal section */}
