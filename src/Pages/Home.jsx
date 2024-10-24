@@ -15,12 +15,12 @@ function Home() {
       <Hero />
       <BookCar />
       <PlanTrip />
-      {/* <PickCar /> */}
+      <PickCar />
       <Banner />
       <ChooseUs />
       <Testimonials />
       <Faq />
-      {/* <Download /> */}
+      <Download />
       <Footer />
     </>
   );
