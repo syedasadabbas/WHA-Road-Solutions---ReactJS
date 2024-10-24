@@ -1511,11 +1511,11 @@ body {
   right: 60px;
 }
 
-@media (max-width: 470px) {
+/* @media (max-width: 470px) {
   .quotes-icon {
     display: none;
   }
-}
+} */
 
 @media (max-width: 900px) {
   .box-2 {
