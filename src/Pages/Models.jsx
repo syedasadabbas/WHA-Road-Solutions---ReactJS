@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from 'axios';
 import Footer from "../components/Footer";
+import MessageModal from "../components/MessageModal";
 import HeroPages from "../components/HeroPages";
 import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
@@ -16,6 +17,10 @@ function Models() {
   const [uniqueCarTypes, setUniqueCarTypes] = useState([]);
   const [selectedCar, setSelectedCar] = useState(null); // State for the selected car
   const [isLoading, setIsLoading] = useState(false);
+  const [modalMessage, setModalMessage] = useState(""); // For modal message
+  const [showModal, setShowModal] = useState(false); // Control modal visibility
+
+  const closeMessageModal = () => setShowModal(false); // Close the modal
 
   const [filters, setFilters] = useState({
     car_make: "",
@@ -139,7 +144,7 @@ function Models() {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
-  // const [email, setEmail] = useState("N/A"); // Defaulting to 'N/A' for optional field
+  const [email, setEmail] = useState(""); // Defaulting to 'N/A' for optional field
   const [age, setAge] = useState("");
   const [dob, setDob] = useState(""); // New field for Date of Birth
   const [streetAddress, setStreetAddress] = useState("");
@@ -156,7 +161,7 @@ function Models() {
   const handleName = (e) => setName(e.target.value);
   const handleLastName = (e) => setLastName(e.target.value);
   const handlePhone = (e) => setPhone(e.target.value);
-  // const handleEmail = (e) => setEmail(e.target.value); // If empty, default to "N/A"
+  const handleEmail = (e) => setEmail(e.target.value); // If empty, default to "N/A"
   const handleDob = (e) => {
     setDob(e.target.value);
     calculateAge(e.target.value); // Calculate age based on DOB
@@ -192,6 +197,7 @@ function Models() {
       name.trim() !== "" &&
       lastName.trim() !== "" &&
       phone.trim() !== "" &&
+      email.trim() !== "" &&
       streetAddress.trim() !== "" &&
       suburb.trim() !== "" &&
       state.trim() !== "" &&
@@ -224,6 +230,7 @@ function Models() {
     setName('');
     setLastName('');
     setPhone('');
+    setEmail('');
     setStreetAddress('');
     setSuburb('');
     setState('');
@@ -244,7 +251,8 @@ function Models() {
 
     // Validate form
     if (!validateForm()) {
-      alert("Please fill all required fields.");
+      setModalMessage("Please fill all required fields.");
+      setShowModal(true);
       return;
     }
 
@@ -257,7 +265,7 @@ function Models() {
     formData.append('first_name', name);
     formData.append('last_name', lastName);
     formData.append('phone', phone);
-    // formData.append('email', email || "N/A"); // Email is optional
+    formData.append('email', email);
     formData.append('dob', dob);
     formData.append('age', age);
     formData.append('street_address', streetAddress);
@@ -306,23 +314,22 @@ function Models() {
         if (responseData.status === "success") {
           setModal(false);
           setSuccessMessageVisible(true);
-          alert("Car Reservation was successful!\nYou will be contacted soon to proceed further. Thanks!");
+          setModalMessage("✅ Car Reservation was successful!\nYou will receive confirmation mail shortly.");
           resetFormFields();
         } else {
-          console.error("Error:", responseData.message);
-          alert("Reservation failed: " + (responseData.message || 'Unexpected error occurred.'));
+          setModalMessage("❌ Failed to reserve the car. Please try again." + (responseData.message || 'Unexpected error occurred.'));
         }
       } else {
         const errorData = await response.json();
-        console.error("Error:", errorData.message || 'Unexpected error occurred.');
-        alert("Reservation failed: " + (errorData.message || 'Unexpected error occurred.'));
+        setModalMessage("❌ Failed to reserve the car. Please try again." + (errorData.message || 'Unexpected error occurred.'));
       }
     } catch (error) {
       console.error("Error submitting reservation:", error);
-      alert("An error occurred. Please try again.");
+      setModalMessage("❗An error occurred. Please try again.");
     }
     finally {
       setIsLoading(false); // Hide loader and enable button
+      setShowModal(true);
     }
 
   };
@@ -366,8 +373,8 @@ function Models() {
     <>
       <section className="models-section">
         <HeroPages name="Vehicle Models" />
+        
         {/* Show success message outside of modal to ensure visibility */}
-
         {successMessageVisible && (
           <p className="booking-done" style={{ padding: 50 }}>
             Check your email to confirm an order.{" "}
@@ -377,6 +384,7 @@ function Models() {
 
         <div onClick={closeModal} className={`modal-overlay ${modal ? "active-modal" : ""}`}></div>
         <div className="container">
+
           {/* Filter section */}
           <div className="filter-bar" style={{ marginTop: 20 }}>
             <div>
@@ -499,6 +507,7 @@ function Models() {
               </div>
             ))}
           </div>
+
           {/* Pagination Controls */}
           <div className="pagination" style={{justifyContent: 'center'}}>
             {Array.from({ length: totalPages }, (_, index) => (
@@ -511,9 +520,8 @@ function Models() {
               </button>
             ))}
           </div>
-          {/* Modal section */}
-          {/* modal ------------------------------------ */}
 
+          {/* Modal section */}
           <div className={`booking-modal ${modal ? "active-modal" : ""}`}>
             {/* title */}
             <div className="booking-modal__title">
@@ -549,7 +557,7 @@ function Models() {
                 )}
               </div>
             </div>
-            {/* personal info */}
+
             {/* personal info */}
             <div className="booking-modal__person-info">
               <h4>Personal Information</h4>
@@ -644,7 +652,7 @@ function Models() {
                       <p className="error-modal">This field is required.</p>
                     </span>
                   </div>
-                  {/* <span>
+                  <span>
                     <label>
                       Email
                     </label>
@@ -655,7 +663,7 @@ function Models() {
                       placeholder="Enter your email address"
                     ></input>
                     <p className="error-modal">Optional field. If left empty, N/A will be sent.</p>
-                  </span> */}
+                  </span>
                 </div>
 
                 <div className="info-form__2col">
@@ -764,6 +772,7 @@ function Models() {
           </div>
         </div>
       </section>
+      {showModal && <MessageModal message={modalMessage} onClose={closeMessageModal} />}
       <Footer />
     </>
   );
