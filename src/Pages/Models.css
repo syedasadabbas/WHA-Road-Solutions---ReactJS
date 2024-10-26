@@ -301,7 +301,7 @@ button.disabled {
   justify-content: center;
   align-items: center;
   height: 100vh; /* Ensure loader takes full height of the viewport */
-/* } */ */
+/* } */ 
 
 .models-section{
   position: relative; /* To position loader absolutely within this */
