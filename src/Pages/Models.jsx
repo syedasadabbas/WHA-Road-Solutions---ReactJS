@@ -39,8 +39,8 @@ function Models() {
   const fetchAllCars = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get("https://liveonline.pythonanywhere.com/api/cars/");
-      // const response = await axios.get("http://127.0.0.1:8000/api/cars/");
+      // const response = await axios.get("https://liveonline.pythonanywhere.com/api/cars/");
+      const response = await axios.get("http://127.0.0.1:8000/api/cars/");
 
       const carsData = response.data;
       setOriginalCars(response.data); // Store the original cars data
@@ -67,8 +67,8 @@ function Models() {
         query += `&price_min=${price_min}&price_max=${price_max}`;
       }
 
-      const response = await axios.get(`https://liveonline.pythonanywhere.com/api/cars/${query}`);
-      // const response = await axios.get(`http://127.0.0.1:8000/api/cars/${query}`);
+      // const response = await axios.get(`https://liveonline.pythonanywhere.com/api/cars/${query}`);
+      const response = await axios.get(`http://127.0.0.1:8000/api/cars/${query}`);
 
       setOriginalCars(response.data); // Store the original cars data after filtering
       setCars(response.data.sort((a, b) => b.id - a.id)); // Sort filtered cars by id in descending order
@@ -301,8 +301,8 @@ function Models() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://liveonline.pythonanywhere.com/api/reserve/', {
-        // const response = await fetch('http://127.0.0.1:8000/api/reserve/', {
+      // const response = await fetch('https://liveonline.pythonanywhere.com/api/reserve/', {
+        const response = await fetch('http://127.0.0.1:8000/api/reserve/', {
 
         method: 'POST',
         headers: {
