@@ -37,6 +37,7 @@ function Models() {
 
   // Fetch all cars without filters
   const fetchAllCars = async () => {
+    setIsLoading(true);
     try {
       const response = await axios.get("https://liveonline.pythonanywhere.com/api/cars/");
       // const response = await axios.get("http://127.0.0.1:8000/api/cars/");
@@ -50,6 +51,8 @@ function Models() {
       setUniqueCarTypes(carTypes);
     } catch (error) {
       console.error("Error fetching all car data:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -371,10 +374,12 @@ function Models() {
 
   return (
     <>
+    {/* {isLoading ? (
+            <Loader />  // Show loader while loading
+          ) : ( */}
       <section className="models-section">
         <HeroPages name="Vehicle Models" />
-        
-        {/* Show success message outside of modal to ensure visibility */}
+        {/* Success message */}
         {successMessageVisible && (
           <p className="booking-done" style={{ padding: 50 }}>
             Check your email to confirm an order.{" "}
@@ -394,7 +399,7 @@ function Models() {
                 name="car_make"
                 value={filters.car_make}
                 onChange={handleInputChange}
-              >
+                >
                 <option value="">All</option>
                 {uniqueBrands.map((brand) => (
                   <option key={brand} value={brand}>{brand}</option>
@@ -408,7 +413,7 @@ function Models() {
                 name="car_type"
                 value={filters.car_type}
                 onChange={handleInputChange}
-              >
+                >
                 <option value="">All</option>
                 {uniqueCarTypes.map((type) => (
                   <option key={type} value={type}>{type}</option>
@@ -422,7 +427,7 @@ function Models() {
                 name="price_range"
                 value={filters.price_range}
                 onChange={handleInputChange}
-              >
+                >
                 <option value="">All</option>
                 <option value="10000-25000">$10,000 - $25,000</option>
                 <option value="25000-40000">$25,000 - $40,000</option>
@@ -444,7 +449,7 @@ function Models() {
                 value="alphabetical"
                 checked={sortOrder === "alphabetical"}
                 onChange={handleRadioChange}
-              />
+                />
               <h2>Sort Alphabetically</h2>
             </label>
             <label className="sorting-radio" style={{ marginTop: 10 }}>
@@ -453,7 +458,7 @@ function Models() {
                 value="price"
                 checked={sortOrder === "price"}
                 onChange={handleRadioChange}
-              />
+                />
               <h2>Sort by Price</h2>
             </label>
             <button className="custom-button-sort" onClick={handleSort}>Sort</button>
@@ -461,6 +466,11 @@ function Models() {
           </div>
 
           {/* Car models listing */}
+          {isLoading ? (
+        <div className="loader-component">
+          <div className="spinner"></div>
+        </div>
+      ) : (
           <div className="models-div">
             {currentCars.map((car) => (
               <div className="models-div__box" key={car.id}>
@@ -507,6 +517,7 @@ function Models() {
               </div>
             ))}
           </div>
+      )}
 
           {/* Pagination Controls */}
           <div className="pagination" style={{justifyContent: 'center'}}>
@@ -515,7 +526,7 @@ function Models() {
                 key={index + 1}
                 onClick={() => paginate(index + 1)}
                 className={currentPage === index + 1 ? 'active' : ''}
-              >
+                >
                 {index + 1}
               </button>
             ))}
@@ -772,6 +783,8 @@ function Models() {
           </div>
         </div>
       </section>
+      
+    {/* )} */}
       {showModal && <MessageModal message={modalMessage} onClose={closeMessageModal} />}
       <Footer />
     </>

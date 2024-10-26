@@ -295,3 +295,57 @@ button.disabled {
 .pagination li {
   margin: 0 5px;
 }
+
+/* .loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ensure loader takes full height of the viewport */
+/* } */ */
+
+.models-section{
+  position: relative; /* To position loader absolutely within this */
+  height: 100vh; /* Full height of the viewport */
+}
+
+/* Loader styling */
+.loader-component {
+  display: flex;                /* Use flexbox for alignment */
+  justify-content: center;     /* Center horizontally */
+  align-items: center;         /* Center vertically */
+  height: 100vh;              /* Full height of the viewport */
+  width: 100%;                 /* Full width of the parent */
+  position: absolute;          /* Position absolutely for centering */
+  top: 0;                      /* Align to top */
+  left: 0;                     /* Align to left */
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: Background for loader */
+  z-index: 9999;              /* Ensure it overlays other elements */
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;  /* Light grey */
+  border-top: 8px solid #ff4d30; /* Blue */
+  border-radius: 50%;
+  width: 40px;                /* Size of spinner */
+  height: 40px;               /* Size of spinner */
+  animation: spin 1s linear infinite; /* Animation for spinning */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 1000px) {
+  .spinner {
+    width: 30px; /* Smaller size for mobile */
+    height: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .spinner {
+    width: 24px; /* Even smaller size for very small devices */
+    height: 24px;
+  }
+}
