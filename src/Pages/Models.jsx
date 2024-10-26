@@ -50,7 +50,7 @@ function Models() {
       setUniqueBrands(brands);
       setUniqueCarTypes(carTypes);
     } catch (error) {
-      console.error("Error fetching all car data:", error);
+      console.error("Error fetching all car data. The error is: ", error);
     } finally {
       setIsLoading(false);
     }
