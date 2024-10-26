@@ -50,8 +50,8 @@ function Contact() {
     }
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/send-email/", formData);
-      // const response = await axios.post("https://liveonline.pythonanywhere.com/send-email/", formData);
+      // const response = await axios.post("http://127.0.0.1:8000/send-email/", formData);
+      const response = await axios.post("https://liveonline.pythonanywhere.com/send-email/", formData);
 
       if (response.status === 200) {
         setModalMessage(<>
