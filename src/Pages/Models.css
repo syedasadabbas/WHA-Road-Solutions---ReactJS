@@ -303,10 +303,6 @@ button.disabled {
   height: 100vh; /* Ensure loader takes full height of the viewport */
 /* } */ 
 
-.models-section{
-  position: relative; /* To position loader absolutely within this */
-  height: 100vh; /* Full height of the viewport */
-}
 
 /* Loader styling */
 .loader-component {
@@ -315,7 +311,7 @@ button.disabled {
   align-items: center;         /* Center vertically */
   height: 100vh;              /* Full height of the viewport */
   width: 100%;                 /* Full width of the parent */
-  position: absolute;          /* Position absolutely for centering */
+  position: absolute !important;          /* Position absolutely for centering */
   top: 0;                      /* Align to top */
   left: 0;                     /* Align to left */
   background-color: rgba(255, 255, 255, 0.8); /* Optional: Background for loader */
