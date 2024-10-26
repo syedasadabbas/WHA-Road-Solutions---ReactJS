@@ -327,7 +327,7 @@ function Models() {
         setModalMessage("❌ Failed to reserve the car. Please try again." + (errorData.message || 'Unexpected error occurred.'));
       }
     } catch (error) {
-      console.error("Error submitting reservation:", error);
+      // console.error("Error submitting reservation:", error);
       setModalMessage("❗An error occurred. Please try again.");
     }
     finally {
