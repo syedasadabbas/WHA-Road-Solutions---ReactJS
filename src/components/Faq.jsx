@@ -114,7 +114,7 @@ function Faq() {
                 </div>
               </div>
 
-              <div className="faq-box">
+              {/* <div className="faq-box">
                 <div
                   id="q6"
                   onClick={() => openQ("q6")}
@@ -129,7 +129,7 @@ function Faq() {
                 >
                   Yes, you can return your rental car early. However, please check our policies regarding early returns, as there may be fees associated with returning a vehicle before the scheduled end of the rental period.
                 </div>
-              </div>
+              </div> */}
 
               <div className="faq-box">
                 <div
@@ -137,7 +137,7 @@ function Faq() {
                   onClick={() => openQ("q7")}
                   className={`faq-box__question ${getClassQuestion("q7")}`}
                 >
-                  <p>7. What forms of payment do you accept for car purchases?</p>
+                  <p>6. What forms of payment do you accept for car purchases?</p>
                   <i className="fa-solid fa-angle-down"></i>
                 </div>
                 <div
@@ -148,7 +148,7 @@ function Faq() {
                 </div>
               </div>
 
-              <div className="faq-box">
+              {/* <div className="faq-box">
                 <div
                   id="q8"
                   onClick={() => openQ("q8")}
@@ -163,7 +163,7 @@ function Faq() {
                 >
                   Renting from WHA Road Solution provides you with a variety of options, competitive pricing, well-maintained vehicles, and exceptional customer service. Our flexible rental terms and comprehensive insurance options ensure a hassle-free experience.
                 </div>
-              </div>
+              </div> */}
 
               <div className="faq-box">
                 <div
@@ -171,7 +171,7 @@ function Faq() {
                   onClick={() => openQ("q9")}
                   className={`faq-box__question ${getClassQuestion("q9")}`}
                 >
-                  <p>9. How can I contact WHA Road Solution for further inquiries?</p>
+                  <p>7. How can I contact WHA Road Solution for further inquiries?</p>
                   <i className="fa-solid fa-angle-down"></i>
                 </div>
                 <div
