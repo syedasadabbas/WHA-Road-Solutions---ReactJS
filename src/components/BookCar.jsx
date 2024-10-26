@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
+import MessageModal from "./MessageModal"; // Import the modal
 
 
 function BookCar() {
   const [modal, setModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState(""); // For modal message
+  const [showModal, setShowModal] = useState(false); // Control modal visibility
+
+  const closeModal = () => setShowModal(false); // Close the modal
 
   const [openAccordion, setOpenAccordion] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -14,6 +19,7 @@ function BookCar() {
     setName('');
     setLastName('');
     setPhone('');
+    setEmail('')
     setStreetAddress('');
     setSuburb('');
     setState('');
@@ -39,6 +45,7 @@ function BookCar() {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [dob, setDob] = useState("");
   const [age, setAge] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
@@ -55,6 +62,7 @@ function BookCar() {
   const handleName = (e) => setName(e.target.value);
   const handleLastName = (e) => setLastName(e.target.value);
   const handlePhone = (e) => setPhone(e.target.value);
+  const handleEmail = (e) => setEmail(e.target.value);
   const handleDob = (e) => {
     setDob(e.target.value);
     calculateAge(e.target.value);
@@ -87,6 +95,7 @@ function BookCar() {
       name.trim() !== "" &&
       lastName.trim() !== "" &&
       phone.trim() !== "" &&
+      email.trim() !== "" &&
       streetAddress.trim() !== "" &&
       suburb.trim() !== "" &&
       state.trim() !== "" &&
@@ -106,7 +115,8 @@ function BookCar() {
 
     // Validate form
     if (!validateForm()) {
-      alert("Please fill all required fields.");
+      setModalMessage("Please fill all required fields.");
+      setShowModal(true);
       return;
     }
 
@@ -115,6 +125,7 @@ function BookCar() {
     formData.append('first_name', name);
     formData.append('last_name', lastName);
     formData.append('phone', phone);
+    formData.append('email', email);
     formData.append('dob', dob);
     formData.append('age', age);
     formData.append('street_address', streetAddress);
@@ -131,28 +142,29 @@ function BookCar() {
 
     try {
       const response = await fetch('https://liveonline.pythonanywhere.com/api/appointment/', {
-        // const response = await fetch('http://127.0.0.1:8000/api/appointment/', {
+      // const response = await fetch('http://127.0.0.1:8000/api/appointment/', {
 
         method: 'POST',
         body: formData,
       });
 
       if (response.ok) {
-        alert("Your Appointment has been succcessfully booked!\nYou will be contacted soon for the visit. Thanks");
+        setModalMessage("✅ Car Reservation was successful!\nYou will receive confirmation mail shortly.");
         resetFormFields();
       } else {
-        alert("Reservation failed. Please try again.");
+        setModalMessage("❌ Failed to reserve the car. Please try again.");
       }
     } catch (error) {
-      console.error("Error submitting reservation:", error);
-      alert("An error occurred. Please try again.");
+      setModalMessage("❗An error occurred. Please try again.");
     }
     finally {
       setIsLoading(false); // Hide loader and enable button
+      setShowModal(true);
     }
   };
 
   return (
+    <>
     <section id="booking-section" className="book-section">
       <div className="container">
         <div className="book-content">
@@ -291,6 +303,27 @@ function BookCar() {
                     <div className="info-form__2col">
                       <span>
                         <label>
+                          Email
+                        </label>
+                        <input
+                          value={email}
+                          onChange={handleEmail}
+                          type="email"
+                          placeholder="Enter your email address"
+                        ></input>
+                        <p className="error-modal">Optional field. If left empty, N/A will be sent.</p>
+                      </span>
+                      <span>
+                        <label>
+                          <i className="fas fa-birthday-cake"></i> {/* Icon for Age */}
+                          Age
+                        </label>
+                        <input value={age} type="text" disabled />
+                      </span>
+                    </div>
+                    <div className="info-form__2col">
+                      <span>
+                        <label>
                           <i className="fas fa-car"></i> {/* Icon for Choose your option */}
                           Choose your option <b>*</b>
                         </label>
@@ -300,13 +333,6 @@ function BookCar() {
                           <option value="rent">Rent Car</option>
                           <option value="rent_to_own">Rent to Own Car</option>
                         </select>
-                      </span>
-                      <span>
-                        <label>
-                          <i className="fas fa-birthday-cake"></i> {/* Icon for Age */}
-                          Age
-                        </label>
-                        <input value={age} type="text" disabled />
                       </span>
                     </div>
 
@@ -333,7 +359,8 @@ function BookCar() {
         </div>
       </div>
     </section>
-
+    {showModal && <MessageModal message={modalMessage} onClose={closeModal} />}
+</>
   );
 }
 
