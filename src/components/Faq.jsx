@@ -42,7 +42,7 @@ function Faq() {
                   id="a1"
                   className={`faq-box__answer ${getClassAnswer("q1")}`}
                 >
-                  To book a car for rental, visit our website, choose your desired vehicle, select your rental dates, and follow the prompts to complete your booking. You can also contact our customer service for assistance.
+                  To book a car for rental, choose your desired vehicle and follow the prompts to complete your booking. You can also submit our appointment booking form and our specialist will contact you soon.
                 </div>
               </div>
 
@@ -59,7 +59,7 @@ function Faq() {
                   id="a2"
                   className={`faq-box__answer ${getClassAnswer("q2")}`}
                 >
-                  To purchase a car from WHA Road Solution, browse our inventory online, select the vehicle you’re interested in, and fill out the inquiry form. Our sales team will contact you to discuss financing options and schedule a test drive.
+                  To purchase a car from WHA Road Solution, browse our fleet online, select the vehicle you’re interested in, and fill out the car booking form. Our sales team will contact you to discuss further.
                 </div>
               </div>
 
@@ -76,7 +76,7 @@ function Faq() {
                   id="a3"
                   className={`faq-box__answer ${getClassAnswer("q3")}`}
                 >
-                  Our rent-to-own program allows you to rent a vehicle with the option to purchase it after a specified rental period. A portion of your rental payments may go toward the purchase price. Please contact us for specific terms and conditions.
+                  Our rent-to-own program allows you to rent a vehicle with the option to purchase it after a specified rental period. A portion of your rental payments will go towards the purchase price. Please contact us or submit car booking form for specific terms and conditions.
                 </div>
               </div>
 
@@ -93,7 +93,7 @@ function Faq() {
                   id="a4"
                   className={`faq-box__answer ${getClassAnswer("q4")}`}
                 >
-                  You can book an appointment for services by visiting our website and navigating to the appointment booking section. Fill out the required details and choose your preferred date and time. Alternatively, you can call us directly to schedule.
+                  You can book an appointment for services by navigating to the appointment booking section. Fill out the required details and our customer service representative will be in contact with you to confirm appointment details.
                 </div>
               </div>
 
@@ -144,7 +144,7 @@ function Faq() {
                   id="a7"
                   className={`faq-box__answer ${getClassAnswer("q7")}`}
                 >
-                  We accept various forms of payment for car purchases, including cash, credit cards, and financing options. Please contact our sales team for more details on financing plans and payment methods.
+                  We accept various forms of payment for car purchases, including cash, credit cards, and financing options. Please contact our sales team by submitting Appointment Booking form.
                 </div>
               </div>
 
@@ -178,7 +178,7 @@ function Faq() {
                   id="a9"
                   className={`faq-box__answer ${getClassAnswer("q9")}`}
                 >
-                  You can reach us through our website's contact form, call our customer service number, or connect with us on social media. Our team is here to assist you with any questions or concerns.
+                  You can reach us through our website's Contact Us form or connect with us on social media. You can also email us at wharoadsolution@gmail.com. Our team is here to assist you with any questions or concerns.
                 </div>
               </div>
             </div>
