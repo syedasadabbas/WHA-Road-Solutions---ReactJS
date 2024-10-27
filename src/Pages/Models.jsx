@@ -766,6 +766,7 @@ function Models() {
                 <div className="reserve-button">
                   <button
                     type="submit"
+                    style={{marginRight: '10px'}}
                     onClick={confirmBooking}
                     disabled={isLoading} // Disable the button while loading
                   >
