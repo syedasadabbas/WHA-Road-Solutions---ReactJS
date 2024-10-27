@@ -185,13 +185,13 @@ function CarDetails() {
                                 </div>
 
                                 {/* Call to Action button */}
-                                <Link
+                                {/* <Link
                                     onClick={bookBtn}
                                     className="cta-btn"
                                     to="/models"
                                 >
                                     Book Car &nbsp; <i className="fa-solid fa-circle-check"></i>
-                                </Link>
+                                </Link> */}
 
                                 {/* <a className="cta-btn" href="#booking-section">
                                     Reserve Now
