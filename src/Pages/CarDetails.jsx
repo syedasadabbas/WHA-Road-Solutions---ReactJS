@@ -53,15 +53,19 @@ function CarDetails() {
     }, [car]);
 
     if (!car) {
-        return <div>No car details available. Please go back and try again.</div>;
+        return <h2>No car details available. Please go back and try again.</h2>;
     }
 
     if (loading) {
-        return <div>Loading car images...</div>;
+        return (
+            <div className="loader-component">
+                <div className="spinner"></div>
+            </div>
+        );
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return <div><h2>Error Loading Cars: {error}</h2></div>;
     }
 
     // Function to handle thumbnail click and set the main image
@@ -116,7 +120,7 @@ function CarDetails() {
                             {/* Description */}
                             <div className="pick-description">
                                 <div className="pick-description__price">
-                                    Value <span>${car.car_price}</span>
+                                    Price <span>${car.car_price}</span>
                                 </div>
                                 <div className="pick-description__table">
                                     <div className="pick-description__table__col">

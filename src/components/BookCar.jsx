@@ -149,10 +149,10 @@ function BookCar() {
       });
 
       if (response.ok) {
-        setModalMessage("✅ Car Reservation was successful!\nYou will receive confirmation mail shortly.");
+        setModalMessage("✅ Appointment Reservation was successful!\nYou will receive confirmation mail shortly.");
         resetFormFields();
       } else {
-        setModalMessage("❌ Failed to reserve the car. Please try again.");
+        setModalMessage("❌ Failed to reserve the appointment. Please try again.");
       }
     } catch (error) {
       setModalMessage("❗An error occurred. Please try again.");
