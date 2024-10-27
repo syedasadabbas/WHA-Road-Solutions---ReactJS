@@ -259,7 +259,7 @@ function BookCar() {
                       </span>
                       <span>
                         <label>
-                          <i className="fas fa-code"></i> {/* Icon for Postcode */}
+                          <i className="fas fa-paper-plane"> </i> {/* Icon for Postcode */}
                           Postcode <b>*</b>
                         </label>
                         <input value={postcode} onChange={handlePostcode} type="text" placeholder="Enter your postcode" required />
@@ -303,7 +303,8 @@ function BookCar() {
                     <div className="info-form__2col">
                       <span>
                         <label>
-                          Email
+                        <i className="fas fa-envelope"> </i>
+                          Email <b>*</b>
                         </label>
                         <input
                           value={email}
@@ -311,7 +312,6 @@ function BookCar() {
                           type="email"
                           placeholder="Enter your email address"
                         ></input>
-                        <p className="error-modal">Optional field. If left empty, N/A will be sent.</p>
                       </span>
                       <span>
                         <label>

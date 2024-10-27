@@ -673,7 +673,6 @@ function Models() {
                       type="email"
                       placeholder="Enter your email address"
                     ></input>
-                    <p className="error-modal">Optional field. If left empty, N/A will be sent.</p>
                   </span>
                 </div>
 
