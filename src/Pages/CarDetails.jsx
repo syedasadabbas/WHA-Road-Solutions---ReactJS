@@ -109,7 +109,7 @@ function CarDetails() {
                                                         ))}
                                                     </div>
                                                 ) : (
-                                                    <h2>No images available for this car.</h2>
+                                                    <h2></h2>
                                                 )}
                                             </div>
                                         </div>
