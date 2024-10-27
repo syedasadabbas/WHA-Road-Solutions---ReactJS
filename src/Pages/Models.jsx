@@ -771,7 +771,7 @@ function Models() {
                     disabled={isLoading} // Disable the button while loading
                   >
                     {isLoading ? (
-                      <span>Loading...</span> // Show loading text or spinner
+                      <span>⏳</span> // Show loading text or spinner
                     ) : (
                       'Reserve Now'
                     )}
