@@ -2538,3 +2538,27 @@ footer {
     width: 80px;
     object-fit: cover;
 }
+
+.mission-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 700px;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.mission-card__header {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #333;
+}
+
+.mission-card__content {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
