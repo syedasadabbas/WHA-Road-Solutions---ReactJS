@@ -91,11 +91,9 @@ function Contact() {
         <div className="container">
           <div className="contact-div">
             <div className="contact-div__text">
-              <h2>Need additional information?</h2>
+              <h2>"Have questions or need assistance?</h2>
               <p>
-                A multifaceted professional skilled in multiple fields of
-                research, development as well as a learning specialist. Over 15
-                years of experience.
+                Reach out to us, and one of our specialists will get back to you soon. We're here to provide you with the information and support you need to make your experience with WHA Road Solution as seamless as possible. Your journey starts with a simple message!"
               </p>
               {/* <a href="tel:(123) 456-7869">
                 <i className="fa-solid fa-phone"></i>&nbsp; (123) 456-7869
@@ -109,7 +107,7 @@ function Contact() {
               </a>
               {/* Embed Google Map */}
               <div className="map-container">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27044.015081053996!2d115.94472873408523!3d-32.082718783500454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32961cabdb8cc7%3A0x504f0b535df46e0!2sHuntingdale%20WA%206110%2C%20Australia!5e0!3m2!1sen!2s!4v1729584187483!5m2!1sen!2s" width="300" height="200" style={{border:0}} title="wha-map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27044.015081053996!2d115.94472873408523!3d-32.082718783500454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32961cabdb8cc7%3A0x504f0b535df46e0!2sHuntingdale%20WA%206110%2C%20Australia!5e0!3m2!1sen!2s!4v1729584187483!5m2!1sen!2s" width="300" height="200" style={{ border: 0 }} title="wha-map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               </div>
               <a href="https://maps.app.goo.gl/i9kd19i9aBt5gaHz8">
                 <i className="fa-solid fa-location-dot"></i>&nbsp; Perth, Australia
@@ -142,7 +140,7 @@ function Contact() {
                 />
 
                 <label>
-                  Tell us about it <b>*</b>
+                  Let us know about your queries <b>*</b>
                 </label>
                 <textarea
                   name="message"
@@ -171,13 +169,11 @@ function Contact() {
           <div className="book-banner__overlay"></div>
           <div className="container">
             <div className="text-content">
-              <h2>Book a car by getting in touch with</h2>
               <span>
-                {/* <i className="fa-solid fa-envelope"></i> */}
-                {/* <i className="fa-solid fa-envelope"></i> */}
-                {/* <h3>(123) 456-7869</h3> */}
-                <h3>WHA</h3>
+                {/* <i className="fa-solid fa-phone"></i> */}
+                <h3><a href="/models" style={{ color: '#ff4d30', textDecoration: 'none' }}>Book a Car</a></h3>
               </span>
+              <h2>by getting in touch with us</h2>
             </div>
           </div>
         </div>

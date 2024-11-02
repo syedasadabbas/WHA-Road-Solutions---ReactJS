@@ -194,25 +194,37 @@ function Models() {
     }
   };
 
-  // Validate form function
+  const [missingFields, setMissingFields] = useState([]); // Track missing required fields
+
+  // Validate form function with missing fields tracking
   const validateForm = () => {
-    return (
-      name.trim() !== "" &&
-      lastName.trim() !== "" &&
-      phone.trim() !== "" &&
-      email.trim() !== "" &&
-      streetAddress.trim() !== "" &&
-      suburb.trim() !== "" &&
-      state.trim() !== "" &&
-      postcode.trim() !== "" &&
-      licence.trim() !== "" &&
-      licenceExpiry.trim() !== "" &&
-      dob.trim() !== "" &&
-      option.trim() !== "" &&
-      licenceFrontImage !== null &&
-      licenceBackImage !== null
+    const requiredFields = {
+      name,
+      lastName,
+      phone,
+      email,
+      streetAddress,
+      suburb,
+      state,
+      postcode,
+      licence,
+      licenceExpiry,
+      dob,
+      option,
+      licenceFrontImage,
+      licenceBackImage,
+    };
+
+    // Directly identify empty fields and update missingFields
+    const emptyFields = Object.keys(requiredFields).filter(
+      (field) => !requiredFields[field] ||
+        (typeof requiredFields[field] === 'string' && requiredFields[field].trim() === '')
     );
+
+    setMissingFields(emptyFields); // Update missing fields immediately
+    return emptyFields.length === 0;
   };
+
   function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -253,8 +265,28 @@ function Models() {
     e.preventDefault();
 
     // Validate form
+    // Validate form
     if (!validateForm()) {
-      setModalMessage("Please fill all required fields.");
+      const fieldNames = {
+        name: "First Name",
+        lastName: "Last Name",
+        phone: "Phone/Mobile",
+        email: "Email",
+        streetAddress: "Street Address",
+        suburb: "Suburb",
+        state: "State",
+        postcode: "Postcode",
+        licence: "Licence",
+        licenceExpiry: "Licence Expiry Date",
+        dob: "Date of Birth",
+        option: "Option",
+        licenceFrontImage: "Licence Image (Front)",
+        licenceBackImage: "Licence Image (Back)",
+      };
+
+      // Build modal message for missing fields
+      const missingFieldNames = missingFields.map(field => fieldNames[field]).join(", ");
+      setModalMessage(`Please fill in all required fields: ${missingFieldNames}`);
       setShowModal(true);
       return;
     }
@@ -374,7 +406,7 @@ function Models() {
 
   return (
     <>
-    {/* {isLoading ? (
+      {/* {isLoading ? (
             <Loader />  // Show loader while loading
           ) : ( */}
       <section className="models-section">
@@ -399,7 +431,7 @@ function Models() {
                 name="car_make"
                 value={filters.car_make}
                 onChange={handleInputChange}
-                >
+              >
                 <option value="">All</option>
                 {uniqueBrands.map((brand) => (
                   <option key={brand} value={brand}>{brand}</option>
@@ -413,7 +445,7 @@ function Models() {
                 name="car_type"
                 value={filters.car_type}
                 onChange={handleInputChange}
-                >
+              >
                 <option value="">All</option>
                 {uniqueCarTypes.map((type) => (
                   <option key={type} value={type}>{type}</option>
@@ -427,7 +459,7 @@ function Models() {
                 name="price_range"
                 value={filters.price_range}
                 onChange={handleInputChange}
-                >
+              >
                 <option value="">All</option>
                 <option value="10000-25000">$10,000 - $25,000</option>
                 <option value="25000-40000">$25,000 - $40,000</option>
@@ -449,7 +481,7 @@ function Models() {
                 value="alphabetical"
                 checked={sortOrder === "alphabetical"}
                 onChange={handleRadioChange}
-                />
+              />
               <h2>Sort Alphabetically</h2>
             </label>
             <label className="sorting-radio" style={{ marginTop: 10 }}>
@@ -458,7 +490,7 @@ function Models() {
                 value="price"
                 checked={sortOrder === "price"}
                 onChange={handleRadioChange}
-                />
+              />
               <h2>Sort by Price</h2>
             </label>
             <button className="custom-button-sort" onClick={handleSort}>Sort</button>
@@ -467,66 +499,66 @@ function Models() {
 
           {/* Car models listing */}
           {isLoading ? (
-        <div className="loader-component">
-          <div className="spinner"></div>
-        </div>
-      ) : (
-          <div className="models-div">
-            {currentCars.map((car) => (
-              <div className="models-div__box" key={car.id}>
-                <div className="models-div__box__img">
-                  <img src={car.car_picture || "/images/default-car.png"} alt={car.car_model} />
-                  <div className="models-div__box__descr">
-                    <div className="models-div__box__descr__name-price">
-                      <div className="models-div__box__descr__name-price__name">
-                        <p>{car.car_make} <br /> {car.car_model}</p>
+            <div className="loader-component">
+              <div className="spinner"></div>
+            </div>
+          ) : (
+            <div className="models-div">
+              {currentCars.map((car) => (
+                <div className="models-div__box" key={car.id}>
+                  <div className="models-div__box__img">
+                    <img src={car.car_picture || "/images/default-car.png"} alt={car.car_model} />
+                    <div className="models-div__box__descr">
+                      <div className="models-div__box__descr__name-price">
+                        <div className="models-div__box__descr__name-price__name">
+                          <p>{car.car_make} <br /> {car.car_model}</p>
+                        </div>
+                        <div className="models-div__box__descr__name-price__price">
+                          <h4>${car.car_price}</h4>
+                        </div>
                       </div>
-                      <div className="models-div__box__descr__name-price__price">
-                        <h4>${car.car_price}</h4>
+                      <div className="models-div__box__descr__name-price__details">
+                        <span>
+                          <i className="fa-solid fa-car-side"></i> &nbsp; {car.car_type}
+                        </span>
+                        <span style={{ textAlign: "right" }}>
+                          {car.doors} Doors &nbsp; <i className="fa-solid fa-door"></i>
+                        </span>
+                        <span>
+                          <i className="fa-solid fa-car-side"></i> &nbsp; {car.transmission}
+                        </span>
+                        <span style={{ textAlign: "right" }}>
+                          {car.fuel_type} &nbsp; <i className="fa-solid fa-gas-pump"></i>
+                        </span>
                       </div>
-                    </div>
-                    <div className="models-div__box__descr__name-price__details">
-                      <span>
-                        <i className="fa-solid fa-car-side"></i> &nbsp; {car.car_type}
-                      </span>
-                      <span style={{ textAlign: "right" }}>
-                        {car.doors} Doors &nbsp; <i className="fa-solid fa-door"></i>
-                      </span>
-                      <span>
-                        <i className="fa-solid fa-car-side"></i> &nbsp; {car.transmission}
-                      </span>
-                      <span style={{ textAlign: "right" }}>
-                        {car.fuel_type} &nbsp; <i className="fa-solid fa-gas-pump"></i>
-                      </span>
-                    </div>
-                    <div className="models-div__box__descr__more__btn"
-                      onClick={(e) => handleViewDetails(e, car)}
-                      role="button"
-                      tabIndex={0}>
-                      View Details
-                    </div>
-                    <div className="models-div__box__descr__name-price__btn"
-                      onClick={(e) => openModal(e, car)}
-                      role="button"
-                      tabIndex={0}
-                      style={{ color: 'white', fontWeight: 700 }}>
-                      Book Now
+                      <div className="models-div__box__descr__more__btn"
+                        onClick={(e) => handleViewDetails(e, car)}
+                        role="button"
+                        tabIndex={0}>
+                        View Details
+                      </div>
+                      <div className="models-div__box__descr__name-price__btn"
+                        onClick={(e) => openModal(e, car)}
+                        role="button"
+                        tabIndex={0}
+                        style={{ color: 'white', fontWeight: 700 }}>
+                        Book Now
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-      )}
+              ))}
+            </div>
+          )}
 
           {/* Pagination Controls */}
-          <div className="pagination" style={{justifyContent: 'center'}}>
+          <div className="pagination" style={{ justifyContent: 'center' }}>
             {Array.from({ length: totalPages }, (_, index) => (
               <button
                 key={index + 1}
                 onClick={() => paginate(index + 1)}
                 className={currentPage === index + 1 ? 'active' : ''}
-                >
+              >
                 {index + 1}
               </button>
             ))}
@@ -576,6 +608,7 @@ function Models() {
                 <div className="info-form__2col">
                   <span>
                     <label>
+                      <i className="fas fa-user"></i>
                       First Name <b>*</b>
                     </label>
                     <input
@@ -584,12 +617,14 @@ function Models() {
                       type="text"
                       placeholder="Enter your first name"
                       required
+                      style={{ border: missingFields.includes('name') ? '2px solid red' : '' }}
                     ></input>
                     <p className="error-modal">This field is required.</p>
                   </span>
 
                   <span>
                     <label>
+                      <i className="fas fa-user"></i> {/* Icon for Last Name */}
                       Last Name <b>*</b>
                     </label>
                     <input
@@ -598,6 +633,7 @@ function Models() {
                       type="text"
                       placeholder="Enter your last name"
                       required
+                      style={{ border: missingFields.includes('lastName') ? '2px solid red' : '' }}
                     ></input>
                     <p className="error-modal">This field is required.</p>
                   </span>
@@ -606,26 +642,15 @@ function Models() {
                 {/* Address Fields */}
                 <div className="info-form__2col">
                   <span>
-                    <label>Street Address <b>*</b></label>
-                    <input value={streetAddress} onChange={handleStreetAddress} type="text" placeholder="Street address" required />
+                    <label><i className="fas fa-home"></i> {/* Icon for Street Address */}
+                      Street Address <b>*</b></label>
+                    <input value={streetAddress} onChange={handleStreetAddress} type="text" placeholder="Street address" required style={{ border: missingFields.includes('streetAddress') ? '2px solid red' : '' }} />
                     <p className="error-modal">This field is required.</p>
                   </span>
                   <span>
-                    <label>Suburb <b>*</b></label>
-                    <input value={suburb} onChange={handleSuburb} type="text" placeholder="Suburb" required />
-                    <p className="error-modal">This field is required.</p>
-                  </span>
-                </div>
-
-                <div className="info-form__2col">
-                  <span>
-                    <label>State <b>*</b></label>
-                    <input value={state} onChange={handleState} type="text" placeholder="State" required />
-                    <p className="error-modal">This field is required.</p>
-                  </span>
-                  <span>
-                    <label>Postcode <b>*</b></label>
-                    <input value={postcode} onChange={handlePostcode} type="text" placeholder="Postcode" required />
+                    <label><i className="fas fa-map-marker-alt"></i> {/* Icon for Suburb */}
+                      Suburb <b>*</b></label>
+                    <input value={suburb} onChange={handleSuburb} type="text" placeholder="Suburb" required style={{ border: missingFields.includes('suburb') ? '2px solid red' : '' }} />
                     <p className="error-modal">This field is required.</p>
                   </span>
                 </div>
@@ -633,6 +658,38 @@ function Models() {
                 <div className="info-form__2col">
                   <span>
                     <label>
+                      <i className="fas fa-flag"></i> {/* Icon for State */}
+                      State <b>*</b>
+                    </label>
+                    <select
+                      value={state}
+                      onChange={handleState}
+                      required
+                      style={{ border: missingFields.includes('option') ? '2px solid red' : '' }}
+                    >
+                      <option value="">-- Select your State --</option>
+                      <option value="WA">WA</option>
+                      <option value="SA">SA</option>
+                      <option value="NT">NT</option>
+                      <option value="NSW">NSW</option>
+                      <option value="NSW">NSW</option>
+                      <option value="VIC">VIC</option>
+                      <option value="QLD">QLD</option>
+                      <option value="TAS">TAS</option>
+                    </select>
+                  </span>
+                  <span>
+                    <label><i className="fas fa-paper-plane"> </i> {/* Icon for Postcode */}
+                      Postcode <b>*</b></label>
+                    <input value={postcode} onChange={handlePostcode} type="text" placeholder="Postcode" required style={{ border: missingFields.includes('postcode') ? '2px solid red' : '' }} />
+                    <p className="error-modal">This field is required.</p>
+                  </span>
+                </div>
+
+                <div className="info-form__2col">
+                  <span>
+                    <label>
+                      <i className="fas fa-phone"></i> {/* Icon for Phone/Mobile */}
                       Phone/Mobile <b>*</b>
                     </label>
                     <input
@@ -641,6 +698,7 @@ function Models() {
                       type="tel"
                       placeholder="Enter your phone number"
                       required
+                      style={{ border: missingFields.includes('phone') ? '2px solid red' : '' }}
                       onKeyPress={(event) => {
                         // Allow only numbers
                         if (!/[0-9]/.test(event.key)) {
@@ -653,8 +711,9 @@ function Models() {
                   {/* Choose Your Option */}
                   <div className="info-form">
                     <span>
-                      <label>Choose Your Option <b>*</b></label>
-                      <select value={option} onChange={handleOption} required>
+                      <label><i className="fas fa-car"></i> {/* Icon for Choose your option */}
+                        Choose your option <b>*</b></label>
+                      <select value={option} onChange={handleOption} required style={{ border: missingFields.includes('option') ? '2px solid red' : '' }} >
                         <option value="" disabled>Select an option</option>
                         <option value="purchase">Purchase Car</option>
                         <option value="rent">Rent Car</option>
@@ -665,20 +724,38 @@ function Models() {
                   </div>
                   <span>
                     <label>
-                      Email
+                      <i className="fas fa-envelope"> </i>
+                      Email <b>*</b>
                     </label>
                     <input
                       value={email}
                       onChange={handleEmail}
                       type="email"
                       placeholder="Enter your email address"
+                      style={{ border: missingFields.includes('email') ? '2px solid red' : '' }}
                     ></input>
+                    <p className="error-modal">This field is required.</p>
+                  </span>
+                  <span>
+                    <label>
+                      <i className="fas fa-calendar-alt"></i> {/* Icon for Date of Birth */}
+                      Date of Birth <b>*</b>
+                    </label>
+                    <input
+                      value={dob}
+                      onChange={handleDob}
+                      type="date"
+                      required
+                      style={{ border: missingFields.includes('dob') ? '2px solid red' : '' }}
+                    ></input>
+                    <p className="error-modal">This field is required.</p>
                   </span>
                 </div>
 
                 <div className="info-form__2col">
                   <span>
                     <label>
+                      <i className="fas fa-id-card"></i> {/* Icon for Licence Number */}
                       Licence Number <b>*</b>
                     </label>
                     <input
@@ -687,12 +764,14 @@ function Models() {
                       type="text"
                       placeholder="Enter your licence number"
                       required
+                      style={{ border: missingFields.includes('licence') ? '2px solid red' : '' }}
                     ></input>
                     <p className="error-modal">This field is required.</p>
                   </span>
 
                   <span>
                     <label>
+                      <i className="fas fa-calendar-check"></i> {/* Icon for Licence Expiry Date */}
                       Licence Expiry Date <b>*</b>
                     </label>
                     <input
@@ -700,14 +779,16 @@ function Models() {
                       onChange={handleLicenceExpiry}
                       type="date"
                       required
+                      style={{ border: missingFields.includes('licenceExpiry') ? '2px solid red' : '' }}
                     ></input>
                     <p className="error-modal">This field is required.</p>
                   </span>
                 </div>
 
-                <div className="info-form__2col">
+                {/* <div className="info-form__2col">
                   <span>
                     <label>
+                      <i className="fas fa-calendar-alt"></i>
                       Date of Birth <b>*</b>
                     </label>
                     <input
@@ -715,28 +796,30 @@ function Models() {
                       onChange={handleDob}
                       type="date"
                       required
+                      style={{ border: missingFields.includes('dob') ? '2px solid red' : '' }}
                     ></input>
                     <p className="error-modal">This field is required.</p>
-                  </span>
+                  </span> */}
 
-                  <span>
-                    <label>
-                      Age <b>*</b>
-                    </label>
-                    <input
-                      value={age}
-                      type="number"
-                      readOnly
-                      required
-                    ></input>
-                    <p className="error-modal">Auto-calculated from DOB.</p>
-                  </span>
-                </div>
+                {/* <span> */}
+                {/* <label> */}
+                {/* Age <b>*</b> */}
+                {/* </label> */}
+                {/* <input */}
+                {/* // value={age} */}
+                {/* // type="number" */}
+                {/* // readOnly */}
+                {/* // required */}
+                {/* // ></input> */}
+                {/* <p className="error-modal">Auto-calculated from DOB.</p> */}
+                {/* </span> */}
+                {/* </div> */}
 
 
                 <div className="info-form__2col">
                   <span>
                     <label>
+                      <i className="fas fa-file-upload"></i> {/* Icon for Upload Licence Image (Front) */}
                       Upload Licence Image (Front) <b>*</b>
                     </label>
                     <input
@@ -744,12 +827,14 @@ function Models() {
                       onChange={handleLicenceFrontImage}
                       accept="image/*"
                       required
+                      style={{ border: missingFields.includes('licenceFrontImage') ? '2px solid red' : '' }}
                     />
                     <p className="error-modal">This field is required.</p>
                   </span>
 
                   <span>
                     <label>
+                      <i className="fas fa-file-upload"></i> {/* Icon for Upload Licence Image (Back) */}
                       Upload Licence Image (Back) <b>*</b>
                     </label>
                     <input
@@ -757,6 +842,7 @@ function Models() {
                       onChange={handleLicenceBackImage}
                       accept="image/*"
                       required
+                      style={{ border: missingFields.includes('licenceFrontImage') ? '2px solid red' : '' }}
                     />
                     <p className="error-modal">This field is required.</p>
                   </span>
@@ -765,7 +851,7 @@ function Models() {
                 <div className="reserve-button">
                   <button
                     type="submit"
-                    style={{marginRight: '10px'}}
+                    style={{ marginRight: '10px' }}
                     onClick={confirmBooking}
                     disabled={isLoading} // Disable the button while loading
                   >
@@ -783,8 +869,8 @@ function Models() {
           </div>
         </div>
       </section>
-      
-    {/* )} */}
+
+      {/* )} */}
       {showModal && <MessageModal message={modalMessage} onClose={closeMessageModal} />}
       <Footer />
     </>

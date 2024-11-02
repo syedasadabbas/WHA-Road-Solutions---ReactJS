@@ -3,7 +3,7 @@ import HeroPages from "../components/HeroPages";
 import PlanTrip from "../components/PlanTrip";
 import AboutMain from "../images/about/about-main.jpg";
 import Box1 from "../images/about/icon1.png";
-import Box2 from "../images/about/icon2.png";
+import Box2 from "../images/about/customer-icon.png";
 import Box3 from "../images/about/icon3.png";
 
 function About() {
@@ -22,32 +22,26 @@ function About() {
               <h3>About Company</h3>
               <h2>You start the engine and your adventure begins</h2>
               <p>
-                At WHA Road Solution, an Australian-based company, we're dedicated to providing the ultimate road solutions tailored to meet the diverse needs of our customers across Australia.
-                Whether you're looking to purchase a new vehicle to explore the stunning landscapes of our great nation, rent a car for a weekend getaway with friends, or opt for our flexible rent-to-own program,
-                we have a comprehensive selection of vehicles that perfectly match your requirements. Our diverse fleet includes everything from compact cars for city driving to spacious SUVs for family adventures, ensuring that you find the ideal vehicle for any occasion.
+                WHA Road Solution provides tailored road solutions throughout Australia to meet diverse customer needs. Whether you're looking to buy a vehicle for exploring our stunning landscapes, rent a car for a weekend getaway, or rideshare drivers seeking affordable rental options, we’ve got you covered. Our diverse fleet includes compact cars for city driving and spacious SUVs for family adventures, ensuring you find the perfect vehicle for any occasion. Let us help you hit the road with confidence!
               </p>
               <div className="about-main__text__icons">
-                <div className="about-main__text__icons__box">
-                  <img src={Box1} alt="car-icon" />
-                  <span>
-                    <h4>25+</h4>
-                    <p>Car Brands</p>
-                  </span>
+                <div className="about-main__text__icons">
+                  <div className="about-main__text__icons__box">
+                    <i className="fas fa-car icon-style" aria-hidden="true"></i>
+                    <span>
+                      <h4>25+</h4>
+                      <p>Car Brands</p>
+                    </span>
+                  </div>
+                  <div className="about-main__text__icons__box">
+                    <i className="fas fa-users icon-style" aria-hidden="true"></i>
+                    <span>
+                      <h4>150+</h4>
+                      <p>Existing Customers</p>
+                    </span>
+                  </div>
                 </div>
-                <div className="about-main__text__icons__box">
-                  <img src={Box2} alt="car-icon" />
-                  <span>
-                    <h4>5</h4>
-                    <p>Service Centers</p>
-                  </span>
-                </div>
-                <div className="about-main__text__icons__box">
-                  <img src={Box3} alt="car-icon" className="last-fk" />
-                  <span>
-                    <h4>14</h4>
-                    <p>Repair Shops</p>
-                  </span>
-                </div>
+
               </div>
             </div>
           </div>
@@ -56,17 +50,17 @@ function About() {
 
             <div className="mission-card">
               <div className="mission-card__header">
-                <h3>Your Journey with <span style={{color: '#fa4226'}}>WHA</span></h3>
+                <h3>Your Journey with <span style={{ color: '#fa4226' }}>WHA</span></h3>
               </div>
               <div className="mission-card__content">
                 <p>
-                  Our mission is to deliver unparalleled value and convenience at every step of your journey. We understand that choosing the right vehicle is more than just a transaction; it’s about creating memorable experiences on the road. That’s why we prioritize exceptional customer service, offering personalized assistance to guide you through your options and help you make informed decisions.
+                  Our mission at WHA Road Solution is to provide exceptional value and convenience throughout your journey. We recognize that selecting the right vehicle is about more than just a transaction; it’s about crafting memorable experiences on the road. That’s why we emphasize outstanding customer service, offering personalized assistance to help you navigate your options and make informed choices.
                 </p>
                 <p>
-                  We pride ourselves on our transparent pricing, with no hidden fees, so you can confidently plan your budget. Our flexible booking options allow you to reserve your vehicle online with ease, and our dedicated team is always on hand to assist you throughout the process, from the moment you select your vehicle to the day you drive off into your next adventure.
+                  We take pride in our transparent pricing with no hidden fees, allowing you to plan your budget with confidence. Our flexible booking options make reserving your vehicle online a breeze, and our dedicated team is always available to support you from the moment you choose your vehicle to the day you embark on your next adventure.
                 </p>
                 <p>
-                  With WHA Road Solution, your road adventures begin with confidence and peace of mind. We are committed to ensuring that every journey is safe, enjoyable, and tailored to your unique needs. Discover the freedom of the open road with us, and experience the difference of choosing a service that genuinely cares about your driving experience in Australia.
+                  With WHA Road Solution, you can hit the road with confidence and peace of mind. We strive to make every journey enjoyable and tailored to your unique needs. Experience the freedom of the open road with us and discover the difference that comes from choosing a service that genuinely cares about your driving experience in Australia.
                 </p>
               </div>
             </div>
@@ -79,11 +73,11 @@ function About() {
         <div className="book-banner__overlay"></div>
         <div className="container">
           <div className="text-content">
-            <h2>Book a car by getting in touch with</h2>
             <span>
               {/* <i className="fa-solid fa-phone"></i> */}
-              <h3>WHA</h3>
+              <h3><a href="/models" style={{ color: '#ff4d30', textDecoration: 'none' }}>Book a Car</a></h3>
             </span>
+            <h2>by getting in touch with us</h2>
           </div>
         </div>
       </div>

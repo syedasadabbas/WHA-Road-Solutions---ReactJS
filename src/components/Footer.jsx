@@ -9,14 +9,14 @@ function Footer() {
                 <span>WHA</span> Road Solution
               </li>
               <li>
-                We offer a wide range of vehicles for all your driving needs. Whether you're looking to 
+                We offer a wide range of vehicles for all your driving needs. Whether you're looking to
                 <strong> buy, rent,</strong> or <strong>rent to own</strong>, we have the perfect car to meet your needs.
               </li>
 
               <li>
-                {/* <a href="tel:(123) 456-7869"> */}
-                <i className="fa-solid fa-location"></i>&nbsp; Huntingdale, WA 6110
-              {/* </a> */}
+                <a>
+                  <i className="fa-solid fa-location"></i>&nbsp; Huntingdale, WA 6110
+                </a>
               </li>
 
               <li>
@@ -28,8 +28,12 @@ function Footer() {
                   &nbsp; wharoadsolution@gmail.com
                 </a>
               </li>
-
+              {/* 
               <li>
+                  <h2 style={{color: 'dark-gray'}}>Copyright © 2024 WHA Road Solution - All Rights Reserved.</h2>
+              </li> */}
+
+              {/* <li>
                 <a
                   style={{ fontSize: "14px" }}
                   target="_blank"
@@ -38,7 +42,7 @@ function Footer() {
                 >
                   Design with ❤️ by Asad
                 </a>
-              </li>
+              </li> */}
             </ul>
 
             <ul className="footer-content__2">
@@ -71,17 +75,19 @@ function Footer() {
             </ul>
 
             <ul className="footer-content__2">
-              <li>Subscription</li>
+              <li>Contact Us</li>
               <li>
-                <p>Subscribe your Email address for latest news & updates.</p>
+                <p>Have questions? Contact us, and a specialist will get back to you promptly to assist you!</p>
               </li>
               <li>
                 <a href="/contact">
-                <button className="submit-email">To Contact Us Form</button>
+                  <button className="submit-email">To Contact Us Form</button>
                 </a>
               </li>
             </ul>
           </div>
+          <br />
+          <h2 style={{ color: 'gray', alignSelf: 'center', justifySelf: 'center', textAlign: 'center', marginTop: '60px' }}>Copyright © 2024 WHA Road Solution - All Rights Reserved.</h2>
         </div>
       </footer>
     </>

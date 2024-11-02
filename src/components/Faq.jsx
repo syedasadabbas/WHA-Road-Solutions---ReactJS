@@ -14,6 +14,11 @@ function Faq() {
   const getClassQuestion = (id) => {
     return activeQ === id ? "active-question" : "";
   };
+  const bookBtn = () => {
+    document
+      .querySelector("#booking-section")
+      .scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <>
@@ -42,7 +47,7 @@ function Faq() {
                   id="a1"
                   className={`faq-box__answer ${getClassAnswer("q1")}`}
                 >
-                  To book a car for rental, choose your desired vehicle and follow the prompts to complete your booking. You can also submit our appointment booking form and our specialist will contact you soon.
+                  To book a car for rental, choose your desired vehicle and follow the prompts to complete your booking. You can also submit our <a href="" onClick={bookBtn} style={{color: '#ff4d30', textDecoration: 'none'}}>Appointment Booking Form</a> and our specialist will contact you soon.
                 </div>
               </div>
 
@@ -59,7 +64,7 @@ function Faq() {
                   id="a2"
                   className={`faq-box__answer ${getClassAnswer("q2")}`}
                 >
-                  To purchase a car from WHA Road Solution, browse our fleet online, select the vehicle you’re interested in, and fill out the car booking form. Our sales team will contact you to discuss further.
+                  To purchase a car from WHA Road Solution, browse our fleet online, select the vehicle you’re interested in, and fill out the <a href="/models" style={{color: '#ff4d30', textDecoration: 'none'}}>Car Booking Form</a>. Our sales team will contact you to discuss further.
                 </div>
               </div>
 
@@ -76,7 +81,7 @@ function Faq() {
                   id="a3"
                   className={`faq-box__answer ${getClassAnswer("q3")}`}
                 >
-                  Our rent-to-own program allows you to rent a vehicle with the option to purchase it after a specified rental period. A portion of your rental payments will go towards the purchase price. Please contact us or submit car booking form for specific terms and conditions.
+                  Our rent-to-own program allows you to rent a vehicle with the option to purchase it after a specified rental period. A portion of your rental payments will go towards the purchase price. Please <a href="/contact" style={{color: '#ff4d30', textDecoration: 'none'}}>Contact Us</a> or submit <a href="/models" style={{color: '#ff4d30', textDecoration: 'none'}}>Car Booking Form</a> for specific terms and conditions.
                 </div>
               </div>
 
@@ -93,7 +98,7 @@ function Faq() {
                   id="a4"
                   className={`faq-box__answer ${getClassAnswer("q4")}`}
                 >
-                  You can book an appointment for services by navigating to the appointment booking section. Fill out the required details and our customer service representative will be in contact with you to confirm appointment details.
+                  You can book an appointment for services by navigating to the <a href="" onClick={bookBtn} style={{color: '#ff4d30', textDecoration: 'none'}}>Appointment Booking</a> section. Fill out the required details and our customer service representative will be in contact with you to confirm appointment details.
                 </div>
               </div>
 
@@ -144,7 +149,7 @@ function Faq() {
                   id="a7"
                   className={`faq-box__answer ${getClassAnswer("q7")}`}
                 >
-                  We accept various forms of payment for car purchases, including cash, credit cards, and financing options. Please contact our sales team by submitting Appointment Booking form.
+                  We accept various forms of payment for car purchases, including cash, credit cards, and financing options. Please contact our sales team by submitting <a href="" onClick={bookBtn} style={{color: '#ff4d30', textDecoration: 'none'}}>Appointment Booking Form</a>.
                 </div>
               </div>
 
@@ -178,7 +183,7 @@ function Faq() {
                   id="a9"
                   className={`faq-box__answer ${getClassAnswer("q9")}`}
                 >
-                  You can reach us through our website's Contact Us form or connect with us on social media. You can also email us at wharoadsolution@gmail.com. Our team is here to assist you with any questions or concerns.
+                  You can reach us through our website's <a href="/contact" style={{color: '#ff4d30', textDecoration: 'none'}}>Contact Us Form</a> or connect with us on social media. You can also email us at <a href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRvwTgrcxCGWCMSKTXFSJwLncHbCJWBmndzRPzPSCZHHGqxLxRBnPtpbBcVZXgNfpxLCTJV" onClick={() => window.location.href = 'mailto:wharoadsolution@gmail.com'} style={{color: '#ff4d30', textDecoration: 'none'}}>wharoadsolution@gmail.com</a>. Our team is here to assist you with any questions or concerns.
                 </div>
               </div>
             </div>

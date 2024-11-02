@@ -90,32 +90,84 @@ function BookCar() {
   };
 
   // Validate form function
+  // const validateForm = () => {
+  //   return (
+  //     name.trim() !== "" &&
+  //     lastName.trim() !== "" &&
+  //     phone.trim() !== "" &&
+  //     email.trim() !== "" &&
+  //     streetAddress.trim() !== "" &&
+  //     suburb.trim() !== "" &&
+  //     state.trim() !== "" &&
+  //     postcode.trim() !== "" &&
+  //     licence.trim() !== "" &&
+  //     licenceExpiry.trim() !== "" &&
+  //     dob.trim() !== "" &&
+  //     option.trim() !== "" &&
+  //     licenceFrontImage !== null &&
+  //     licenceBackImage !== null
+  //   );
+  // };
+
+  const [missingFields, setMissingFields] = useState([]); // Track missing required fields
+
   const validateForm = () => {
-    return (
-      name.trim() !== "" &&
-      lastName.trim() !== "" &&
-      phone.trim() !== "" &&
-      email.trim() !== "" &&
-      streetAddress.trim() !== "" &&
-      suburb.trim() !== "" &&
-      state.trim() !== "" &&
-      postcode.trim() !== "" &&
-      licence.trim() !== "" &&
-      licenceExpiry.trim() !== "" &&
-      dob.trim() !== "" &&
-      option.trim() !== "" &&
-      licenceFrontImage !== null &&
-      licenceBackImage !== null
+    const requiredFields = {
+      name,
+      lastName,
+      phone,
+      email,
+      streetAddress,
+      suburb,
+      state,
+      postcode,
+      licence,
+      licenceExpiry,
+      dob,
+      option,
+      licenceFrontImage,
+      licenceBackImage,
+    };
+
+    // Directly identify empty fields and update missingFields
+    const emptyFields = Object.keys(requiredFields).filter(
+      (field) => !requiredFields[field] ||
+        (typeof requiredFields[field] === 'string' && requiredFields[field].trim() === '')
     );
+
+    setMissingFields(emptyFields); // Update missing fields immediately
+    return emptyFields.length === 0;
   };
 
   // Confirm booking function
   const confirmBooking = async (e) => {
     e.preventDefault();
 
+    // Validate form and check if there are missing fields
+    const isValid = validateForm();
+
     // Validate form
-    if (!validateForm()) {
-      setModalMessage("Please fill all required fields.");
+    if (!isValid) {
+      // const fieldNames = {
+      //   name: "First Name",
+      //   lastName: "Last Name",
+      //   phone: "Phone/Mobile",
+      //   email: "Email",
+      //   streetAddress: "Street Address",
+      //   suburb: "Suburb",
+      //   state: "State",
+      //   postcode: "Postcode",
+      //   licence: "Licence",
+      //   licenceExpiry: "Licence Expiry Date",
+      //   dob: "Date of Birth",
+      //   option: "Option",
+      //   licenceFrontImage: "Licence Image (Front)",
+      //   licenceBackImage: "Licence Image (Back)",
+      // };
+
+      // Build modal message for missing fields
+      // const missingFieldNames = missingFields.map(field => fieldNames[field]).join(", ");
+      setModalMessage(`❗Please fill in all required fields`);
       setShowModal(true);
       return;
     }
@@ -142,7 +194,7 @@ function BookCar() {
 
     try {
       const response = await fetch('https://liveonline.pythonanywhere.com/api/appointment/', {
-      // const response = await fetch('http://127.0.0.1:8000/api/appointment/', {
+        // const response = await fetch('http://127.0.0.1:8000/api/appointment/', {
 
         method: 'POST',
         body: formData,
@@ -165,202 +217,235 @@ function BookCar() {
 
   return (
     <>
-    <section id="booking-section" className="book-section">
-      <div className="container">
-        <div className="book-content">
-          <div className="book-content__box">
-            <h2>Book an Appointment</h2>
+      <section id="booking-section" className="book-section">
+        <div className="container">
+          <div className="book-content">
+            <div className="book-content__box">
+              <h2>Book an Appointment</h2>
 
-            {/* Accordion for entire form */}
-            <div className="accordion-section">
-              <div className="accordion-header" onClick={() => toggleAccordion('personalInfo')}>
-                <h4>Booking Form for Appointment</h4>
-                <span className={`accordion-icon ${openAccordion === 'personalInfo' ? "open" : ""}`}>
-                  {openAccordion === 'personalInfo' ? (
-                    <i className="fas fa-chevron-up"></i> // Use Font Awesome chevron up icon
-                  ) : (
-                    <i className="fas fa-chevron-down"></i> // Use Font Awesome chevron down icon
-                  )}
-                </span>
-              </div>
-              {openAccordion && (
-                <div className="accordion-content">
-                  <form className="info-form" onSubmit={confirmBooking}>
-                    <div className="info-form__2col">
-                      <span>
-                        <label>
-                          <i className="fas fa-user"></i> {/* Icon for First Name */}
-                          First Name <b>*</b>
-                        </label>
-                        <input value={name} onChange={handleName} type="text" placeholder="Enter your first name" required />
-                      </span>
-                      <span>
-                        <label>
-                          <i className="fas fa-user"></i> {/* Icon for Last Name */}
-                          Last Name <b>*</b>
-                        </label>
-                        <input value={lastName} onChange={handleLastName} type="text" placeholder="Enter your last name" required />
-                      </span>
-                    </div>
+              {/* Accordion for entire form */}
+              <div className="accordion-section">
+                <div className="accordion-header" onClick={() => toggleAccordion('personalInfo')}>
+                  <h4>Booking Form for Appointment</h4>
+                  <span className={`accordion-icon ${openAccordion === 'personalInfo' ? "open" : ""}`}>
+                    {openAccordion === 'personalInfo' ? (
+                      <i className="fas fa-chevron-up"></i> // Use Font Awesome chevron up icon
+                    ) : (
+                      <i className="fas fa-chevron-down"></i> // Use Font Awesome chevron down icon
+                    )}
+                  </span>
+                </div>
+                {openAccordion && (
+                  <div className="accordion-content">
+                    <form className="info-form" onSubmit={confirmBooking}>
+                      <div className="info-form__2col">
+                        <span>
+                          <label>
+                            <i className="fas fa-user"></i> {/* Icon for First Name */}
+                            First Name <b>*</b>
+                          </label>
+                          <input value={name} onChange={handleName} type="text" placeholder="Enter your first name" required style={{ border: missingFields.includes('name') ? '2px solid red' : '' }} />
+                        </span>
+                        <span>
+                          <label>
+                            <i className="fas fa-user"></i> {/* Icon for Last Name */}
+                            Last Name <b>*</b>
+                          </label>
+                          <input value={lastName} onChange={handleLastName} type="text" placeholder="Enter your last name" required style={{ border: missingFields.includes('lastName') ? '2px solid red' : '' }} />
+                        </span>
+                      </div>
 
-                    <div className="info-form__2col">
-                      <span>
-                        <label>
-                          <i className="fas fa-phone"></i> {/* Icon for Phone/Mobile */}
-                          Phone/Mobile <b>*</b>
-                        </label>
-                        <input
-                          value={phone}
-                          onChange={handlePhone}
-                          type="tel"
-                          placeholder="Enter your phone number"
-                          required
-                          onKeyPress={(event) => {
-                            // Allow only numbers
-                            if (!/[0-9]/.test(event.key)) {
-                              event.preventDefault();
-                            }
-                          }}
-                        />
-                      </span>
-                      <span>
-                        <label>
-                          <i className="fas fa-calendar-alt"></i> {/* Icon for Date of Birth */}
-                          Date of Birth <b>*</b>
-                        </label>
-                        <input value={dob} onChange={handleDob} type="date" required />
-                      </span>
-                    </div>
+                      <div className="info-form__2col">
+                        <span>
+                          <label>
+                            <i className="fas fa-phone"></i> {/* Icon for Phone/Mobile */}
+                            Phone/Mobile <b>*</b>
+                          </label>
+                          <input
+                            value={phone}
+                            onChange={handlePhone}
+                            type="tel"
+                            placeholder="Enter your phone number"
+                            required
+                            style={{ border: missingFields.includes('phone') ? '2px solid red' : '' }}
+                            onKeyPress={(event) => {
+                              // Allow only numbers
+                              if (!/[0-9]/.test(event.key)) {
+                                event.preventDefault();
+                              }
+                            }}
+                          />
+                        </span>
+                        <span>
+                          <label>
+                            <i className="fas fa-calendar-alt"></i> {/* Icon for Date of Birth */}
+                            Date of Birth <b>*</b>
+                          </label>
+                          <input value={dob} onChange={handleDob} type="date" required style={{ border: missingFields.includes('dob') ? '2px solid red' : '' }} />
+                        </span>
+                      </div>
+                      <div className="info-form__2col">
+                        <span>
+                          <label>
+                            <i className="fas fa-car"></i> {/* Icon for Choose your option */}
+                            Choose your option <b>*</b>
+                          </label>
+                          <select value={option}
+                            onChange={handleOption}
+                            required
+                            style={{ border: missingFields.includes('option') ? '2px solid red' : '' }}
+                          >
+                            <option value="">-- Select an option --</option>
+                            <option value="purchase">Purchase Car</option>
+                            <option value="rent">Rent Car</option>
+                            <option value="rent_to_own">Rent to Own Car</option>
+                          </select>
+                        </span>
+                        <span>
+                          <label>
+                            <i className="fas fa-envelope"> </i>
+                            Email <b>*</b>
+                          </label>
+                          <input
+                            value={email}
+                            onChange={handleEmail}
+                            type="email"
+                            placeholder="Enter your email address"
+                            style={{ border: missingFields.includes('email') ? '2px solid red' : '' }}
+                          ></input>
+                          <p className="error-modal">This field is required.</p>
+                        </span>
+                      </div>
 
-                    <div className="info-form__2col">
-                      <span>
-                        <label>
-                          <i className="fas fa-home"></i> {/* Icon for Street Address */}
-                          Street Address <b>*</b>
-                        </label>
-                        <input value={streetAddress} onChange={handleStreetAddress} type="text" placeholder="Enter your address" required />
-                      </span>
-                      <span>
-                        <label>
-                          <i className="fas fa-map-marker-alt"></i> {/* Icon for Suburb */}
-                          Suburb <b>*</b>
-                        </label>
-                        <input value={suburb} onChange={handleSuburb} type="text" placeholder="Enter your suburb" required />
-                      </span>
-                    </div>
+                      <div className="info-form__2col">
+                        <span>
+                          <label>
+                            <i className="fas fa-home"></i> {/* Icon for Street Address */}
+                            Street Address <b>*</b>
+                          </label>
+                          <input value={streetAddress} onChange={handleStreetAddress} type="text" placeholder="Enter your address" required style={{ border: missingFields.includes('streetAddress') ? '2px solid red' : '' }} />
+                        </span>
+                        <span>
+                          <label>
+                            <i className="fas fa-map-marker-alt"></i> {/* Icon for Suburb */}
+                            Suburb <b>*</b>
+                          </label>
+                          <input value={suburb} onChange={handleSuburb} type="text" placeholder="Enter your suburb" required style={{ border: missingFields.includes('suburb') ? '2px solid red' : '' }} />
+                        </span>
+                      </div>
 
-                    <div className="info-form__2col">
-                      <span>
-                        <label>
-                          <i className="fas fa-flag"></i> {/* Icon for State */}
-                          State <b>*</b>
-                        </label>
-                        <input value={state} onChange={handleState} type="text" placeholder="Enter your state" required />
-                      </span>
-                      <span>
-                        <label>
-                          <i className="fas fa-paper-plane"> </i> {/* Icon for Postcode */}
-                          Postcode <b>*</b>
-                        </label>
-                        <input value={postcode} onChange={handlePostcode} type="text" placeholder="Enter your postcode" required />
-                      </span>
-                    </div>
+                      <div className="info-form__2col">
+                        <span>
+                          <label>
+                            <i className="fas fa-flag"></i> {/* Icon for State */}
+                            State <b>*</b>
+                          </label>
+                          <select
+                            value={state}
+                            onChange={handleState}
+                            required
+                            style={{ border: missingFields.includes('option') ? '2px solid red' : '' }}
+                          >
+                            <option value="">-- Select your State --</option>
+                            <option value="WA">WA</option>
+                            <option value="SA">SA</option>
+                            <option value="NT">NT</option>
+                            <option value="NSW">NSW</option>
+                            <option value="NSW">NSW</option>
+                            <option value="VIC">VIC</option>
+                            <option value="QLD">QLD</option>
+                            <option value="TAS">TAS</option>
+                          </select>
+                        </span>
+                        <span>
+                          <label>
+                            <i className="fas fa-paper-plane"> </i> {/* Icon for Postcode */}
+                            Postcode <b>*</b>
+                          </label>
+                          <input value={postcode} onChange={handlePostcode} type="text" placeholder="Enter your postcode" required style={{ border: missingFields.includes('postcode') ? '2px solid red' : '' }} />
+                        </span>
+                      </div>
 
-                    <div className="info-form__2col">
-                      <span>
-                        <label>
-                          <i className="fas fa-id-card"></i> {/* Icon for Licence Number */}
-                          Licence Number <b>*</b>
-                        </label>
-                        <input value={licence} onChange={handleLicence} type="text" placeholder="Enter your licence number" required />
-                      </span>
-                      <span>
-                        <label>
-                          <i className="fas fa-calendar-check"></i> {/* Icon for Licence Expiry Date */}
-                          Licence Expiry Date <b>*</b>
-                        </label>
-                        <input value={licenceExpiry} onChange={handleLicenceExpiry} type="date" required />
-                      </span>
-                    </div>
+                      <div className="info-form__2col">
+                        <span>
+                          <label>
+                            <i className="fas fa-id-card"></i> {/* Icon for Licence Number */}
+                            Licence Number <b>*</b>
+                          </label>
+                          <input value={licence} onChange={handleLicence} type="text" placeholder="Enter your licence number" required style={{ border: missingFields.includes('licence') ? '2px solid red' : '' }} />
+                        </span>
+                        <span>
+                          <label>
+                            <i className="fas fa-calendar-check"></i> {/* Icon for Licence Expiry Date */}
+                            Licence Expiry Date <b>*</b>
+                          </label>
+                          <input value={licenceExpiry} onChange={handleLicenceExpiry} type="date" required style={{ border: missingFields.includes('licenceExpiry') ? '2px solid red' : '' }} />
+                        </span>
+                      </div>
 
-                    <div className="info-form__2col">
+                      <div className="info-form__2col">
+                        <span>
+                          <label>
+                            <i className="fas fa-file-upload"></i> {/* Icon for Upload Licence Image (Front) */}
+                            Upload Licence Image (Front) <b>*</b>
+                          </label>
+                          <input type="file" onChange={handleLicenceFrontImage} accept="image/*" required style={{ border: missingFields.includes('licenceFrontImage') ? '2px solid red' : '' }} />
+                        </span>
+                        <span>
+                          <label>
+                            <i className="fas fa-file-upload"></i> {/* Icon for Upload Licence Image (Back) */}
+                            Upload Licence Image (Back) <b>*</b>
+                          </label>
+                          <input type="file" onChange={handleLicenceBackImage} accept="image/*" required style={{ border: missingFields.includes('licenceBackImage') ? '2px solid red' : '' }} />
+                        </span>
+                      </div>
+                      {/* <div className="info-form__2col">
                       <span>
                         <label>
-                          <i className="fas fa-file-upload"></i> {/* Icon for Upload Licence Image (Front) */}
-                          Upload Licence Image (Front) <b>*</b>
-                        </label>
-                        <input type="file" onChange={handleLicenceFrontImage} accept="image/*" required />
-                      </span>
-                      <span>
-                        <label>
-                          <i className="fas fa-file-upload"></i> {/* Icon for Upload Licence Image (Back) */}
-                          Upload Licence Image (Back) <b>*</b>
-                        </label>
-                        <input type="file" onChange={handleLicenceBackImage} accept="image/*" required />
-                      </span>
-                    </div>
-
-                    <div className="info-form__2col">
-                      <span>
-                        <label>
-                        <i className="fas fa-envelope"> </i>
-                          Email <b>*</b>
-                        </label>
-                        <input
-                          value={email}
-                          onChange={handleEmail}
-                          type="email"
-                          placeholder="Enter your email address"
-                        ></input>
-                      </span>
-                      <span>
-                        <label>
-                          <i className="fas fa-birthday-cake"></i> {/* Icon for Age */}
-                          Age
-                        </label>
-                        <input value={age} type="text" disabled />
-                      </span>
-                    </div>
-                    <div className="info-form__2col">
-                      <span>
-                        <label>
-                          <i className="fas fa-car"></i> {/* Icon for Choose your option */}
+                          <i className="fas fa-car"></i>
                           Choose your option <b>*</b>
                         </label>
-                        <select value={option} onChange={handleOption} required>
+                        <select value={option} onChange={handleOption} required style={{ border: missingFields.includes('option') ? '2px solid red' : '' }} >
                           <option value="">-- Select an option --</option>
                           <option value="purchase">Purchase Car</option>
                           <option value="rent">Rent Car</option>
                           <option value="rent_to_own">Rent to Own Car</option>
                         </select>
-                      </span>
-                    </div>
+                      </span> */}
+                      {/* <span> */}
+                      {/* <label> */}
+                      {/* <i className="fas fa-birthday-cake"></i> Icon for Age */}
+                      {/* Age */}
+                      {/* </label> */}
+                      {/* <input value={age} type="text" disabled /> */}
+                      {/* </span> */}
+                      {/* </div> */}
 
-                    {/* Submit button */}
-                    <div className="info-form__submit">
-                      <button
-                        type="submit"
-                        onClick={confirmBooking}
-                        disabled={isLoading} // Disable the button while loading
-                      >
-                        {isLoading ? (
-                          <span>⏳</span> // Show loading text or spinner
-                        ) : (
-                          'Book Appointment'
-                        )}
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              )}
+                      {/* Submit button */}
+                      <div className="info-form__submit">
+                        <button
+                          type="submit"
+                          onClick={confirmBooking}
+                          disabled={isLoading} // Disable the button while loading
+                        >
+                          {isLoading ? (
+                            <span>⏳</span> // Show loading text or spinner
+                          ) : (
+                            'Book Appointment'
+                          )}
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                )}
+              </div>
+
             </div>
-
           </div>
         </div>
-      </div>
-    </section>
-    {showModal && <MessageModal message={modalMessage} onClose={closeModal} />}
-</>
+      </section>
+      {showModal && <MessageModal message={modalMessage} onClose={closeModal} />}
+    </>
   );
 }
 

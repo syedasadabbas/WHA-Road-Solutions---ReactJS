@@ -36,8 +36,7 @@ function PlanTrip() {
                 <img src={Drive} alt="icon_img" />
                 <h3>Let's Hit the Road</h3>
                 <p>
-                  Once your booking is confirmed, you’re ready to drive! Whether you’re buying, renting, or
-                  choosing a rent-to-own plan, we’ve got you covered with our wide range of cars.
+                  Once your booking is confirmed, you’re all set to hit the road! Whether you’re buying, renting, or opting for a rent-to-own plan, we have you covered with our extensive selection of vehicles. Our team will guide you through the paperwork, ensuring a smooth process.
                 </p>
               </div>
             </div>

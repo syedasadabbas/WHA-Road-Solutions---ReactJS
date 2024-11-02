@@ -12,11 +12,11 @@ function TestimonialsPage() {
           <div className="book-banner__overlay"></div>
           <div className="container">
             <div className="text-content">
-              <h2>Book a car by getting in touch with us</h2>
               <span>
-                <i className="fa-solid fa-phone"></i>
-                <h3>(123) 456-7869</h3>
+                {/* <i className="fa-solid fa-phone"></i> */}
+                <h3><a href="/models" style={{ color: '#ff4d30', textDecoration: 'none' }}>Book a Car</a></h3>
               </span>
+              <h2>by getting in touch with us</h2>
             </div>
           </div>
         </div>
