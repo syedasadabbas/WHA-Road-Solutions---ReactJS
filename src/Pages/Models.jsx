@@ -410,7 +410,7 @@ function Models() {
             <Loader />  // Show loader while loading
           ) : ( */}
       <section className="models-section">
-        <HeroPages name="Vehicle Models" />
+        <HeroPages name="Car Booking" />
         {/* Success message */}
         {successMessageVisible && (
           <p className="booking-done" style={{ padding: 50 }}>
@@ -461,6 +461,7 @@ function Models() {
                 onChange={handleInputChange}
               >
                 <option value="">All</option>
+                <option value="5000-10000">$5000 - $10,000</option>
                 <option value="10000-25000">$10,000 - $25,000</option>
                 <option value="25000-40000">$25,000 - $40,000</option>
                 <option value="40000-60000">$40,000 - $60,000</option>

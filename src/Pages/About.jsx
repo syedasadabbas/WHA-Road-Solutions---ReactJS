@@ -7,7 +7,7 @@ function About() {
   return (
     <>
       <section className="about-page">
-        <HeroPages name="About" />
+        <HeroPages name="About Us" />
         <div className="container">
           <div className="about-main">
             <img

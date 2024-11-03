@@ -25,12 +25,12 @@ function Navbar() {
             </li>
             <li>
               <Link onClick={openNav} to="/about">
-                About
+                About Us
               </Link>
             </li>
             <li>
               <Link onClick={openNav} to="/models">
-                Models
+                Car Booking
               </Link>
             </li>
             <li>
@@ -45,7 +45,7 @@ function Navbar() {
             </li>
             <li>
               <Link onClick={openNav} to="/contact">
-                Contact
+                Contact Us
               </Link>
             </li>
           </ul>

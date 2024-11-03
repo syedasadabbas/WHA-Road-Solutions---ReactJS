@@ -54,7 +54,7 @@ function Footer() {
                 <a href="/about">About Us</a>
               </li>
               <li>
-                <a href="/models">Vehicle Models</a>
+                <a href="/models">Car Booking</a>
               </li>
               <li>
                 <a href="/testimonials">Client Testimonials</a>

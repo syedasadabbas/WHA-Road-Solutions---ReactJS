@@ -87,7 +87,7 @@ function Contact() {
   return (
     <>
       <section className="contact-page">
-        <HeroPages name="Contact" />
+        <HeroPages name="Contact Us" />
         <div className="container">
           <div className="contact-div">
             <div className="contact-div__text">
