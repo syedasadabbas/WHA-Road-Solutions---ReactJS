@@ -360,6 +360,7 @@ function BookCar() {
                             <option value="QLD">QLD</option>
                             <option value="TAS">TAS</option>
                           </select>
+                          <p className="error-modal">This field is required.</p>
                         </span>
                         <span>
                           <label>

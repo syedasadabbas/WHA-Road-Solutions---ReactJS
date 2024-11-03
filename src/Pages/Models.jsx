@@ -565,7 +565,7 @@ function Models() {
           </div>
 
           {/* Modal section */}
-          <div className={`booking-modal ${modal ? "active-modal" : ""}`}>
+          <div className={`booking-modal ${modal ? "active-modal" : ""}`} style={{marginTop:'45px'}}>
             {/* title */}
             <div className="booking-modal__title">
               <h2>Complete Reservation</h2>
@@ -677,6 +677,7 @@ function Models() {
                       <option value="QLD">QLD</option>
                       <option value="TAS">TAS</option>
                     </select>
+                    <p className="error-modal">This field is required.</p>
                   </span>
                   <span>
                     <label><i className="fas fa-paper-plane"> </i> {/* Icon for Postcode */}
@@ -849,6 +850,7 @@ function Models() {
                 </div>
 
                 <div className="reserve-button">
+                  <br />
                   <button
                     type="submit"
                     style={{ marginRight: '10px' }}
@@ -862,8 +864,12 @@ function Models() {
                     )}
                   </button>
                   <button type="button" onClick={closeModal}>Close</button>
+                  <br />
+                  <br />
+                  <br />
                 </div>
               </form>
+              
             </div>
 
           </div>
