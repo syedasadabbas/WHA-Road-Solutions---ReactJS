@@ -28,6 +28,32 @@ function Footer() {
                   &nbsp; wharoadsolution@gmail.com
                 </a>
               </li>
+
+              <li>
+                <h2>
+                <a
+                  href="https://www.instagram.com/wharoadsolution"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fa-brands fa-instagram"></i>
+                  &nbsp; @wharoadsolution
+                </a>
+                </h2>
+              </li>
+
+              <li>
+                <h2>
+                <a
+                  href="https://x.com/wharoadsolution"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fa-brands fa-x-twitter"></i>
+                  &nbsp; @wharoadsolution
+                </a>
+                </h2>
+              </li>
               {/* 
               <li>
                   <h2 style={{color: 'dark-gray'}}>Copyright © 2024 WHA Road Solution - All Rights Reserved.</h2>
