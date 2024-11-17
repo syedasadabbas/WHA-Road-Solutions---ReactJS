@@ -3,9 +3,9 @@ import HeroPages from "../components/HeroPages";
 
 function Team() {
   const teamPpl = [
-    { name: "Wasim", job: "Co-Founder WHA" },
-    { name: "Haider", job: "Co-Founder WHA" },
-    { name: "Ahmad", job: "Co-Founder WHA" },
+    { name: "Warran", job: "Co-Founder WHA" },
+    { name: "Haidi", job: "Co-Founder WHA" },
+    { name: "Aaron", job: "Co-Founder WHA" },
   ];
   return (
     <>
@@ -34,13 +34,25 @@ function Team() {
         >
           This Website was Developed with ❤️ by Asad
         </a> */}
+        <div className="" style={{ justifyItems: 'center', textAlign: 'center', marginBottom: '70px' }}>
+          <div className="">
+            <div className="team-container__box">
+              <div className="team-container__box__img-div">
+              </div>
+              <div className="team-container__box__descr">
+                <h3>James</h3>
+                <p>Manager</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="" style={{ justifyItems: 'center', textAlign: 'center' }}>
           <div className="">
             <div className="team-container__box">
               <div className="team-container__box__img-div">
               </div>
               <div className="team-container__box__descr">
-                <h3>Syed Asad Abbas</h3>
+                <h3>Syed Asad</h3>
                 <p>Web and Mobile App Developer</p>
                 <br />
                 <div className="team-container__social-links" style={{ display: 'flex', gap: '15px', justifyContent: 'center' }}>
