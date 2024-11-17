@@ -510,6 +510,8 @@ function Models() {
                   <div className="models-div__box__img">
                     <img src={car.car_picture || "/images/default-car.png"} alt={car.car_model} />
                     <div className="models-div__box__descr">
+                  <text style={{color: 'gray'}}><b><i>* Price applicable if you buy outright</i></b></text>
+                  <br />
                       <div className="models-div__box__descr__name-price">
                         <div className="models-div__box__descr__name-price__name">
                           <p>{car.car_make} <br /> {car.car_model}</p>
@@ -596,6 +598,7 @@ function Models() {
                     <h5>
                       <span>Car Price -</span> ${selectedCar.car_price}
                     </h5>
+                    <p style={{color: 'light-gray'}}><b><i>* This price is applicable if you buy outright</i></b></p>
                     {<img src={selectedCar.car_picture} alt="car_img" />}
                   </>
                 )}
