@@ -598,7 +598,7 @@ function Models() {
                     <h5>
                       <span>Car Price -</span> ${selectedCar.car_price}
                     </h5>
-                    <p style={{color: 'light-gray'}}><b><i>* This price is applicable if you buy outright</i></b></p>
+                    <p style={{color: 'gray'}}><b><i>* This price is applicable if you buy outright</i></b></p>
                     {<img src={selectedCar.car_picture} alt="car_img" />}
                   </>
                 )}
