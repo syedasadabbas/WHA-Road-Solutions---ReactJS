@@ -580,7 +580,7 @@ function Models() {
             <div className="booking-modal__message">
               <h4>
                 <i className="fa-solid fa-circle-info"></i> Upon completing this
-                reservation enquiry, you will receive a confirmation mail to provided email
+                reservation enquiry, you will receive a confirmation message to provided email
               </h4>
               <p>
                 Our customer representative will contact you further after you receive the confirmation email.
