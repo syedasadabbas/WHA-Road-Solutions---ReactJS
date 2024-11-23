@@ -28,6 +28,7 @@ function CarDetails() {
     //NEW CODE
 
     const [successMessageVisible, setSuccessMessageVisible] = useState(true); // For tracking success message visibility
+    // Declare state hooks at the top level of the component
 
     const [modal, setModal] = useState(false); //  class - active-modal
     const [selectedCar, setSelectedCar] = useState(null); // State for the selected car
@@ -242,8 +243,8 @@ function CarDetails() {
         setIsLoading(true);
 
         try {
-            // const response = await fetch('https://liveonline.pythonanywhere.com/api/reserve/', {
-                const response = await fetch('http://127.0.0.1:8000/api/reserve/', {
+            const response = await fetch('https://liveonline.pythonanywhere.com/api/reserve/', {
+                // const response = await fetch('http://127.0.0.1:8000/api/reserve/', {
 
                 method: 'POST',
                 headers: {
@@ -384,7 +385,15 @@ function CarDetails() {
                                             </div>
                                         </div>
                                     </div>
+                                    {car.car_description && (
+                                        <div className="book-content__box" style={{ marginTop: '30px', marginBottom: '30px' }}>
+                                            <h2 style={{ color: '#ff4d30' }}>More Description & Details</h2>
+                                            <span style={{ fontWeight: 'bold', fontSize: '16px' }}>{car.car_description}</span>
+                                        </div>
+                                    )}
+
                                 </section>
+
                             </div>
 
                             {/* Description */}
@@ -454,9 +463,9 @@ function CarDetails() {
                                     </div> */}
                                 </div>
                                 <div className="pick-description__table__col" >
-                                        <span style={{fontSize: '1.4rem', fontWeight: '700'}}>VIN</span>
-                                        <span style={{fontSize: '0.9rem', fontWeight: '700'}}>{car.vin}</span>
-                                    </div>
+                                    <span style={{ fontSize: '1.4rem', fontWeight: '700' }}>VIN</span>
+                                    <span style={{ fontSize: '1.1rem', fontWeight: '700' }}>{car.vin}</span>
+                                </div>
                                 <br /><br />
                                 <div className="models-div__box__descr__name-price__btn"
                                     onClick={(e) => openModal(e, car)}
