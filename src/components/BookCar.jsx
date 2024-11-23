@@ -217,11 +217,7 @@ function BookCar() {
 
   return (
     <>
-    <br />
-    <br />
-    <br />
-    <br />
-      <section id="booking-section" className="book-section" style={{marginTop: '35px'}}>
+      <section id="booking-section" className="book-section" style={{marginTop: '75px'}}>
         <div className="container">
           <div className="book-content">
             <div className="book-content__box">
