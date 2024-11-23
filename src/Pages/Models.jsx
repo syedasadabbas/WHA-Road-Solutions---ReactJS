@@ -410,7 +410,7 @@ function Models() {
             <Loader />  // Show loader while loading
           ) : ( */}
       <section className="models-section">
-        <HeroPages name="Car Booking" />
+        <HeroPages name="Our Fleet" />
         {/* Success message */}
         {successMessageVisible && (
           <p className="booking-done" style={{ padding: 50 }}>
@@ -525,7 +525,7 @@ function Models() {
                           <i className="fa-solid fa-car-side"></i> &nbsp; {car.car_type}
                         </span>
                         <span style={{ textAlign: "right" }}>
-                          {car.doors} Doors &nbsp; <i className="fa-solid fa-door"></i>
+                          {car.doors} Doors &nbsp; <i className="fa-solid fa-door-open"></i>
                         </span>
                         <span>
                           <i className="fa-solid fa-car-side"></i> &nbsp; {car.transmission}
