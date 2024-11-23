@@ -381,6 +381,7 @@ body {
 @media (max-width: 400px) {
   .book-content__box {
     padding: 4rem 2.5rem 5rem 2.5rem;
+    margin-top: 80px;
   }
 }
 .book-content__box h2 {
@@ -921,9 +922,6 @@ body {
   margin-top: 6rem;
 }
 
-.pick-description {
-  width: 25rem;
-}
 .pick-description__price {
   width: 100%;
   background-color: #ff4d30;
@@ -958,6 +956,7 @@ body {
 .pick-description__table__col span:nth-child(1) {
   border-right: 2px solid #706f7b;
 }
+
 
 .cta-btn {
   font-size: 2rem;
