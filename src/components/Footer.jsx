@@ -41,7 +41,6 @@ function Footer() {
                 </a>
                 </h2>
               </li>
-
               <li>
                 <h2>
                 <a
@@ -51,6 +50,18 @@ function Footer() {
                 >
                   <i className="fa-brands fa-x-twitter"></i>
                   &nbsp; @wharoadsolution
+                </a>
+                </h2>
+              </li>
+              <li>
+                <h2>
+                <a
+                  href="https://www.facebook.com/people/WHA-Road-Solution/61567290635331/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fa-brands fa-facebook"></i>
+                  &nbsp; WHA Road Solution
                 </a>
                 </h2>
               </li>
@@ -80,7 +91,7 @@ function Footer() {
                 <a href="/about">About Us</a>
               </li>
               <li>
-                <a href="/models">Car Booking</a>
+                <a href="/models">Our Fleet</a>
               </li>
               <li>
                 <a href="/testimonials">Client Testimonials</a>
