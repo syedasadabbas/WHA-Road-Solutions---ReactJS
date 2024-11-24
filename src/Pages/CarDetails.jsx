@@ -399,7 +399,7 @@ function CarDetails() {
                             {/* Description */}
                             <div className="pick-description">
                                 <div className="pick-description__price">
-                                    Price <span>${car.car_price}</span>
+                                    Price <span>${car.car_price >= 1 ? car.car_price : 'TBC'}</span>
                                 </div>
                                 <div className="pick-description__table">
                                     <div className="pick-description__table__col">
@@ -518,7 +518,7 @@ function CarDetails() {
                                             <span>Car -</span> {selectedCar.car_type}
                                         </h5>
                                         <h5>
-                                            <span>Car Price -</span> ${selectedCar.car_price}
+                                            <span>Car Price -</span> ${selectedCar.car_price > 1 ? selectedCar.car_price : 'TBC'}
                                         </h5>
                                         <p style={{ color: 'gray' }}><b><i>* This price is applicable if you buy outright</i></b></p>
                                         {<img src={selectedCar.car_picture} alt="car_img" />}

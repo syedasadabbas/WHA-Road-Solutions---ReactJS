@@ -517,7 +517,7 @@ function Models() {
                           <p>{car.car_make} <br /> {car.car_model}</p>
                         </div>
                         <div className="models-div__box__descr__name-price__price">
-                          <h4>${car.car_price}</h4>
+                        <h4>{car.car_price && car.car_price >= 1 ? `$${car.car_price}` : 'TBC'}</h4>
                         </div>
                       </div>
                       <div className="models-div__box__descr__name-price__details">
@@ -595,7 +595,7 @@ function Models() {
                       <span>Car -</span> {selectedCar.car_type}
                     </h5>
                     <h5>
-                      <span>Car Price -</span> ${selectedCar.car_price}
+                    <span>Car Price -</span> ${selectedCar.car_price > 1 ? selectedCar.car_price : 'TBC'}
                     </h5>
                     <p style={{color: 'gray'}}><b><i>* This price is applicable if you buy outright</i></b></p>
                     {<img src={selectedCar.car_picture} alt="car_img" />}
